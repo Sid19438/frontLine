@@ -119,7 +119,7 @@ const profile = {
   avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
   plans: [
     {
-      label: 'Super Saver Pack',
+      label: 'Super Saver Packs',
       minutes: 15,
       discount: '5% Off',
       price: 1411,
