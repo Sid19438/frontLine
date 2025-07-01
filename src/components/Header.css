@@ -1,0 +1,67 @@
+.sticky-header {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  width: 100%;
+}
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 2rem;
+}
+.logo-section {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+.logo-icon {
+  font-size: 2rem;
+  margin-right: 0.5rem;
+}
+.nav-section button {
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 20px;
+  background: #ffd600;
+  color: #222;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.nav-section .chat-btn {
+  background: #fff;
+  border: 2px solid #ffd600;
+}
+.profile-section {
+  display: flex;
+  align-items: center;
+}
+.lang-select {
+  margin-right: 1rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+.profile-icon {
+  font-size: 1.7rem;
+}
+@media (max-width: 700px) {
+  .header-content {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+  }
+  .logo-section {
+    font-size: 1rem;
+  }
+  .nav-section button {
+    margin: 0.2rem 0.2rem;
+    padding: 0.4rem 0.7rem;
+    font-size: 0.9rem;
+  }
+} 

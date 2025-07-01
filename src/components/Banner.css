@@ -1,0 +1,72 @@
+.banner-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff8e1;
+  padding: 2rem 1rem;
+  flex-wrap: wrap;
+}
+.banner-media {
+  flex: 1 1 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.banner-img {
+  max-width: 320px;
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+.banner-content {
+  flex: 2 1 350px;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.banner-content h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.banner-content p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+.chat-now-btn {
+  background: #ffd600;
+  color: #222;
+  border: none;
+  border-radius: 20px;
+  padding: 0.7rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.app-links {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 1rem;
+}
+.app-link {
+  color: #222;
+  background: #fff;
+  border: 1px solid #ffd600;
+  border-radius: 8px;
+  padding: 0.2rem 0.8rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+@media (max-width: 900px) {
+  .banner-section {
+    flex-direction: column;
+    padding: 1rem 0.5rem;
+  }
+  .banner-content {
+    padding: 1rem 0;
+    align-items: center;
+    text-align: center;
+  }
+} 
