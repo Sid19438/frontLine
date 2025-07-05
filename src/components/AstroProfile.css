@@ -48,20 +48,20 @@
   flex-direction: column;
   gap: 0.7rem;
 }
-.astro-chat-btn, .astro-call-btn {
+.astro-consultation-btn {
   background: #ffd600;
   color: #222;
   border: none;
   border-radius: 20px;
-  padding: 0.6rem 1.5rem;
+  padding: 0.8rem 2rem;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.1rem;
   cursor: pointer;
-  margin-bottom: 0.2rem;
+  transition: background 0.2s, transform 0.2s;
 }
-.astro-call-btn {
-  background: #fff;
-  border: 2px solid #ffd600;
+.astro-consultation-btn:hover {
+  background: #ffed4e;
+  transform: translateY(-2px);
 }
 .astro-plans {
   margin-bottom: 2rem;
@@ -199,6 +199,10 @@
     margin-left: 0;
     flex-direction: row;
     gap: 1rem;
+  }
+  .astro-consultation-btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
   }
   .plans-list {
     flex-direction: column;
