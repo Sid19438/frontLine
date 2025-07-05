@@ -5,11 +5,12 @@
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  padding: 4rem 2rem;
+  padding: 6rem 2rem;
   flex-wrap: wrap;
   position: relative;
   overflow: hidden;
   animation: fadeInUp 1s ease-out;
+  min-height: 80vh;
 }
 
 .banner-section::before {
@@ -20,54 +21,238 @@
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 30% 20%, rgba(255, 214, 0, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 70% 80%, rgba(255, 119, 198, 0.1) 0%, transparent 50%);
+    radial-gradient(circle at 30% 20%, rgba(255, 214, 0, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(255, 119, 198, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(255, 214, 0, 0.1) 0%, transparent 70%);
   pointer-events: none;
 }
 
-.banner-media {
-  flex: 1 1 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: fadeInLeft 1s ease-out 0.3s both;
-  position: relative;
-}
-
-.banner-img {
-  max-width: 350px;
-  width: 100%;
-  border-radius: 20px;
-  box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(255, 255, 255, 0.1);
-  animation: float 6s ease-in-out infinite;
-  transition: all 0.3s ease;
-}
-
-.banner-img:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 
-    0 25px 50px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.2);
-}
-
-.banner-content {
-  flex: 2 1 350px;
-  padding: 2rem 3rem;
+.diya-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  animation: fadeInRight 1s ease-out 0.6s both;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
   position: relative;
   z-index: 1;
+  max-width: 800px;
+  width: 100%;
 }
 
-.banner-content h2 {
-  font-size: 3rem;
+/* Diya Base */
+.diya-base {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Diya Body */
+.diya-body {
+  width: 120px;
+  height: 80px;
+  background: linear-gradient(135deg, #8B4513, #A0522D, #CD853F);
+  border-radius: 60px 60px 20px 20px;
+  position: relative;
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.3),
+    inset 0 -5px 15px rgba(0, 0, 0, 0.2);
+  border: 2px solid #654321;
+}
+
+/* Diya Oil */
+.diya-oil {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  right: 20px;
+  height: 40px;
+  background: linear-gradient(180deg, #FFD700, #FFA500, #FF8C00);
+  border-radius: 0 0 30px 30px;
+  animation: oilShimmer 3s ease-in-out infinite;
+}
+
+@keyframes oilShimmer {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* Diya Wick */
+.diya-wick {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 15px;
+  background: linear-gradient(180deg, #8B4513, #654321);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(255, 214, 0, 0.5);
+}
+
+/* Diya Flame */
+.diya-flame {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 30px;
+  animation: flameFlicker 0.5s ease-in-out infinite alternate;
+}
+
+.flame-core {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 20px;
+  background: linear-gradient(180deg, #FFFFFF, #FFD700, #FFA500);
+  border-radius: 4px 4px 0 0;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  animation: coreFlicker 0.3s ease-in-out infinite alternate;
+}
+
+.flame-outer {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 25px;
+  background: linear-gradient(180deg, #FFD700, #FFA500, #FF4500);
+  border-radius: 8px 8px 4px 4px;
+  box-shadow: 0 0 30px rgba(255, 214, 0, 0.6);
+  animation: outerFlicker 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes flameFlicker {
+  0% { transform: translateX(-50%) scale(1) rotate(-1deg); }
+  100% { transform: translateX(-50%) scale(1.05) rotate(1deg); }
+}
+
+@keyframes coreFlicker {
+  0% { opacity: 0.9; height: 18px; }
+  100% { opacity: 1; height: 22px; }
+}
+
+@keyframes outerFlicker {
+  0% { opacity: 0.8; height: 23px; }
+  100% { opacity: 1; height: 27px; }
+}
+
+/* Sparkles */
+.flame-sparkles {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 20px;
+}
+
+.sparkle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #FFD700;
+  border-radius: 50%;
+  animation: sparkleFloat 2s ease-in-out infinite;
+}
+
+.sparkle-1 {
+  top: 0;
+  left: 10px;
+  animation-delay: 0s;
+}
+
+.sparkle-2 {
+  top: 5px;
+  right: 5px;
+  animation-delay: 0.5s;
+}
+
+.sparkle-3 {
+  top: 8px;
+  left: 5px;
+  animation-delay: 1s;
+}
+
+.sparkle-4 {
+  top: 3px;
+  right: 15px;
+  animation-delay: 1.5s;
+}
+
+@keyframes sparkleFloat {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(0) scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1);
+  }
+}
+
+/* Diya Glow */
+.diya-glow {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 60px;
+  background: radial-gradient(ellipse, rgba(255, 214, 0, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateX(-50%) scale(1.1);
+  }
+}
+
+/* Diya Shadow */
+.diya-shadow {
+  width: 100px;
+  height: 20px;
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  margin-top: 10px;
+  animation: shadowPulse 2s ease-in-out infinite;
+}
+
+@keyframes shadowPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+}
+
+/* Diya Text */
+.diya-text {
+  text-align: center;
+  animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+.diya-title {
+  font-size: 4rem;
+  font-weight: 700;
   margin-bottom: 1rem;
   font-family: 'Playfair Display', serif;
-  font-weight: 700;
   color: #fff;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   background: linear-gradient(45deg, #ffd600, #ffed4e, #fff);
@@ -75,35 +260,51 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   line-height: 1.2;
+  animation: titleGlow 3s ease-in-out infinite;
 }
 
-.banner-content p {
-  font-size: 1.4rem;
-  margin-bottom: 2rem;
+@keyframes titleGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(255, 214, 0, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 214, 0, 0.6));
+  }
+}
+
+.diya-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2.5rem;
   color: rgba(255, 255, 255, 0.9);
   font-weight: 300;
   line-height: 1.6;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  font-family: 'Poppins', sans-serif;
 }
 
-.chat-now-btn {
-  background: linear-gradient(45deg, #ffd600, #ffed4e);
-  color: #222;
+.diya-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.diya-btn {
+  padding: 1rem 2rem;
   border: none;
   border-radius: 30px;
-  padding: 1rem 2.5rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 2rem;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 25px rgba(255, 214, 0, 0.4);
   font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+  display: inline-block;
 }
 
-.chat-now-btn::before {
+.diya-btn::before {
   content: '';
   position: absolute;
   top: 0;
@@ -114,81 +315,137 @@
   transition: left 0.6s;
 }
 
-.chat-now-btn:hover::before {
+.diya-btn:hover::before {
   left: 100%;
 }
 
-.chat-now-btn:hover {
+.diya-btn.primary {
+  background: linear-gradient(45deg, #ffd600, #ffed4e);
+  color: #222;
+  box-shadow: 0 8px 25px rgba(255, 214, 0, 0.4);
+}
+
+.diya-btn.primary:hover {
   transform: translateY(-3px);
   box-shadow: 0 12px 35px rgba(255, 214, 0, 0.6);
 }
 
-.app-links {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.8);
-  font-weight: 500;
-}
-
-.app-link {
-  color: #fff;
+.diya-btn.secondary {
   background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 15px;
-  padding: 0.5rem 1.2rem;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
   backdrop-filter: blur(10px);
-  position: relative;
-  overflow: hidden;
 }
 
-.app-link::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s;
-}
-
-.app-link:hover::before {
-  left: 100%;
-}
-
-.app-link:hover {
+.diya-btn.secondary:hover {
   background: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.5);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+}
+
+/* Floating Elements */
+.floating-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.floating-om,
+.floating-star,
+.floating-lotus,
+.floating-mandala {
+  position: absolute;
+  font-size: 2rem;
+  animation: floatElement 8s ease-in-out infinite;
+  opacity: 0.6;
+}
+
+.floating-om {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.floating-star {
+  top: 30%;
+  right: 15%;
+  animation-delay: 2s;
+}
+
+.floating-lotus {
+  bottom: 30%;
+  left: 15%;
+  animation-delay: 4s;
+}
+
+.floating-mandala {
+  bottom: 20%;
+  right: 10%;
+  animation-delay: 6s;
+}
+
+@keyframes floatElement {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 1;
+  }
 }
 
 @media (max-width: 900px) {
   .banner-section {
+    padding: 4rem 1rem;
+    min-height: 70vh;
+  }
+  
+  .diya-container {
+    gap: 2rem;
+  }
+  
+  .diya-body {
+    width: 100px;
+    height: 70px;
+  }
+  
+  .diya-title {
+    font-size: 3rem;
+  }
+  
+  .diya-subtitle {
+    font-size: 1.3rem;
+  }
+  
+  .diya-buttons {
     flex-direction: column;
-    padding: 3rem 1rem;
-  }
-  .banner-content {
-    padding: 2rem 1rem;
     align-items: center;
-    text-align: center;
   }
-  .banner-content h2 {
+  
+  .diya-btn {
+    width: 200px;
+  }
+  
+  .floating-elements {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .diya-title {
     font-size: 2.5rem;
   }
-  .banner-content p {
-    font-size: 1.2rem;
-  }
-  .chat-now-btn {
-    padding: 0.9rem 2rem;
+  
+  .diya-subtitle {
     font-size: 1.1rem;
   }
-  .app-links {
-    flex-direction: column;
-    gap: 0.8rem;
+  
+  .diya-body {
+    width: 80px;
+    height: 60px;
   }
 } 
