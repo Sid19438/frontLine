@@ -1,59 +1,173 @@
 .astrologers-section {
-  background: #fff;
-  padding: 2rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 4rem 2rem;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 1s ease-out 0.8s both;
 }
+
+.astrologers-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(255, 214, 0, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(255, 119, 198, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
 .astrologers-section h2 {
-  font-size: 2rem;
-  margin-bottom: 0.3rem;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(45deg, #ffd600, #ffed4e, #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  z-index: 1;
 }
+
 .astrologers-section p {
-  color: #666;
-  margin-bottom: 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 3rem;
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1.6;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
 }
+
 .astrologers-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
+
 .astrologer-card {
-  background: #fff8e1;
-  border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  padding: 1.2rem 1.5rem;
-  min-width: 180px;
-  max-width: 220px;
-  flex: 1 1 180px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  padding: 2rem 1.5rem;
+  min-width: 200px;
+  max-width: 250px;
+  flex: 1 1 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.8s ease-out both;
 }
-.astro-img-placeholder {
-  font-size: 2.5rem;
-  margin-bottom: 0.7rem;
+
+.astrologer-card:nth-child(1) { animation-delay: 0.1s; }
+.astrologer-card:nth-child(2) { animation-delay: 0.2s; }
+.astrologer-card:nth-child(3) { animation-delay: 0.3s; }
+.astrologer-card:nth-child(4) { animation-delay: 0.4s; }
+.astrologer-card:nth-child(5) { animation-delay: 0.5s; }
+
+.astrologer-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s;
 }
+
+.astrologer-card:hover::before {
+  left: 100%;
+}
+
+.astrologer-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.astro-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 4px solid rgba(255, 214, 0, 0.6);
+  box-shadow: 0 8px 25px rgba(255, 214, 0, 0.3);
+  transition: all 0.3s ease;
+  animation: float 4s ease-in-out infinite;
+}
+
+.astrologer-card:hover .astro-avatar {
+  border-color: rgba(255, 214, 0, 0.8);
+  box-shadow: 0 12px 35px rgba(255, 214, 0, 0.5);
+  transform: scale(1.05);
+}
+
 .astro-name {
   font-weight: 600;
-  font-size: 1.1rem;
-  margin-bottom: 0.3rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  font-family: 'Poppins', sans-serif;
 }
+
 .astro-reviews {
-  color: #e65100;
-  margin-bottom: 0.2rem;
+  color: rgba(255, 214, 0, 0.9);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  font-size: 0.95rem;
 }
+
 .review-count {
-  color: #d32f2f;
+  color: #ffd600;
   font-weight: bold;
+  text-shadow: 0 2px 8px rgba(255, 214, 0, 0.4);
 }
+
 .astro-rating {
   color: #ffd600;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  text-shadow: 0 2px 8px rgba(255, 214, 0, 0.4);
+  animation: glow 2s ease-in-out infinite;
 }
+
 @media (max-width: 700px) {
+  .astrologers-section {
+    padding: 3rem 1rem;
+  }
+  .astrologers-section h2 {
+    font-size: 2.5rem;
+  }
+  .astrologers-section p {
+    font-size: 1.1rem;
+  }
   .astrologers-list {
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
   }
   .astrologer-card {
     max-width: 100%;
