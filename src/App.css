@@ -157,3 +157,336 @@ body, html, #root, .App {
     transform: rotate(360deg);
   }
 }
+
+/* Services Info Section Styles */
+.services-info-section {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 1.5rem;
+  margin: 3rem auto 2.5rem auto;
+  padding: 3rem 2rem 2.5rem 2rem;
+  max-width: 1100px;
+  box-shadow: 0 8px 32px 0 rgba(80, 40, 120, 0.10);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 1.1s ease-out 0.7s both;
+}
+
+.services-info-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 214, 0, 0.10) 0%, transparent 60%),
+    radial-gradient(circle at 80% 20%, rgba(120, 119, 198, 0.10) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.services-title {
+  font-size: 2.5rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(45deg, #ffd600, #ffed4e, #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.services-list {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  position: relative;
+  z-index: 1;
+}
+
+.service-card {
+  background: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 1.2rem;
+  box-shadow: 0 6px 24px 0 rgba(255, 214, 0, 0.10);
+  padding: 2rem 1.5rem;
+  min-width: 260px;
+  max-width: 400px;
+  flex: 1 1 320px;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+  border: 1.5px solid rgba(255, 214, 0, 0.13);
+  animation: fadeInUp 1.2s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+.service-card h3 {
+  font-size: 1.4rem;
+  color: #ffd600;
+  margin-bottom: 0.7rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.service-card p {
+  font-size: 1.08rem;
+  color: #fff;
+  font-weight: 300;
+  line-height: 1.7;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.13);
+}
+
+.service-card b {
+  color: #ffed4e;
+  font-weight: 500;
+}
+
+.service-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 16px 40px 0 rgba(255, 214, 0, 0.18);
+}
+
+@media (max-width: 900px) {
+  .services-list {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .service-card {
+    max-width: 100%;
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+/* Review Section Styles */
+.review-section {
+  background: #fff6fa;
+  padding: 4rem 0 3rem 0;
+  margin: 0 auto 0 auto;
+  text-align: center;
+}
+
+.review-title {
+  font-size: 2.3rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.review-subtitle {
+  color: #6b5b7a;
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+}
+
+.review-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  position: relative;
+}
+
+.review-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 2px 16px 0 rgba(80, 40, 120, 0.07);
+  padding: 2.2rem 1.5rem 2rem 1.5rem;
+  min-width: 320px;
+  max-width: 350px;
+  flex: 1 1 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 0.5rem;
+  border: 2px solid #ffe3f0;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.review-card:hover {
+  box-shadow: 0 8px 32px 0 rgba(255, 119, 198, 0.13);
+  transform: translateY(-6px) scale(1.03);
+}
+
+.review-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1.1rem;
+  border: 3px solid #ffd600;
+  box-shadow: 0 4px 18px rgba(255, 214, 0, 0.13);
+}
+
+.review-stars {
+  color: #ffd600;
+  font-size: 1.3rem;
+  margin-bottom: 0.7rem;
+  letter-spacing: 2px;
+}
+
+.review-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #222;
+  margin-bottom: 0.2rem;
+}
+
+.review-title-small {
+  color: #6b5b7a;
+  font-size: 1rem;
+  margin-bottom: 1.1rem;
+}
+
+.review-text {
+  color: #333;
+  font-size: 1.05rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.carousel-arrow {
+  background: #fff0f5;
+  border: 2px solid #ffd6e0;
+  color: #e48ab8;
+  font-size: 1.7rem;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, border 0.2s;
+  margin: 0 1rem;
+  box-shadow: 0 2px 8px rgba(255, 119, 198, 0.07);
+}
+
+.carousel-arrow:hover {
+  background: #ffe3f0;
+  border-color: #ffb6d5;
+}
+
+@media (max-width: 1100px) {
+  .review-carousel {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .review-card {
+    max-width: 95vw;
+    min-width: 0;
+    width: 100%;
+  }
+  .carousel-arrow {
+    margin: 1rem 0;
+  }
+}
+
+/* Why Astrology Section Styles */
+.why-astrology-section {
+  background: #fff6fa;
+  padding: 3.5rem 0 2.5rem 0;
+  margin: 0 auto;
+  text-align: center;
+  border-top: 1px solid #fbe3ee;
+}
+
+.why-astrology-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.why-astrology-title {
+  font-size: 2.1rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #222;
+  letter-spacing: 1px;
+}
+
+.dropdown-arrow {
+  background: none;
+  border: 2px solid #e48ab8;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border 0.2s, background 0.2s, transform 0.3s;
+  outline: none;
+  margin-left: 0.5rem;
+  padding: 0;
+}
+
+.dropdown-arrow svg {
+  display: block;
+  transition: transform 0.3s;
+}
+
+.dropdown-arrow.open svg {
+  transform: rotate(180deg);
+}
+
+.why-astrology-underline {
+  width: 180px;
+  height: 4px;
+  background: #e48ab8;
+  margin: 0.7rem auto 2.2rem auto;
+  border-radius: 2px;
+}
+
+.why-astrology-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+  background: none;
+  color: #3a2d3c;
+  font-size: 1.13rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  padding: 0 1.5rem;
+  animation: fadeInUp 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.why-astrology-content h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 1.1rem;
+  color: #222;
+}
+
+.medium-font {
+  font-size: 1.01rem;
+}
+
+@media (max-width: 700px) {
+  .why-astrology-title {
+    font-size: 1.3rem;
+  }
+  .why-astrology-underline {
+    width: 90px;
+    height: 3px;
+  }
+  .why-astrology-content {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+}

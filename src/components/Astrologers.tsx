@@ -8,6 +8,9 @@ const astrologers = [
   { name: 'PriyankaP', reviews: 11753, rating: 5, avatar: 'https://randomuser.me/api/portraits/women/44.jpg' },
   { name: 'Vaibhavi Tarot', reviews: 8789, rating: 5, avatar: 'https://randomuser.me/api/portraits/women/42.jpg' },
   { name: 'ChayaS', reviews: 2466, rating: 5, avatar: 'https://randomuser.me/api/portraits/women/43.jpg' },
+  { name: 'Rohit Sharma', reviews: 10500, rating: 5, avatar: 'https://randomuser.me/api/portraits/men/42.jpg' },
+  { name: 'Anjali Tarot', reviews: 9800, rating: 5, avatar: 'https://randomuser.me/api/portraits/women/45.jpg' },
+  { name: 'Suresh Astrologer', reviews: 8900, rating: 5, avatar: 'https://randomuser.me/api/portraits/men/43.jpg' },
 ];
 
 const Astrologers = () => {
