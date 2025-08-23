@@ -9,6 +9,7 @@ import AstroProfile from './components/AstroProfile';
 import ReviewSection from './components/ReviewSection';
 import WhyAstrology from './components/WhyAstrology';
 import CategorySection from './components/CategorySection';
+import Dashboard from './components/Dashboard';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
             </>
           } />
           <Route path="/astrologer/:name" element={<AstroProfile />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </div>
     </Router>
