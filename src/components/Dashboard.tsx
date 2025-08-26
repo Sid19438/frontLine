@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import api from '../api/client';
 import './Dashboard.css';
 
 interface Plan {
@@ -61,17 +62,18 @@ const Dashboard: React.FC = () => {
     rating: '5'
   });
 
-  const API_BASE_URL = 'http://localhost:5000/api/dashboard';
+  const DASHBOARD_PREFIX = '/dashboard';
+  const WEBSITE_PREFIX = '/website';
 
   // Fetch astrologers
   const fetchAstrologers = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${API_BASE_URL}/astrologers`);
-      if (!response.ok) throw new Error('Failed to fetch astrologers');
-      const data = await response.json();
+      // Use public website endpoint for listing to avoid any auth/protection issues
+      const { data } = await api.get(`${WEBSITE_PREFIX}/astrologers`);
       setAstrologers(data);
     } catch (err) {
+      console.log('dashLogger', err )
       setError(err instanceof Error ? err.message : 'An error occurred');
     } finally {
       setLoading(false);
@@ -168,15 +170,7 @@ const Dashboard: React.FC = () => {
         isActive: true
       };
 
-      const response = await fetch(`${API_BASE_URL}/astrologers`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(astrologerData),
-      });
-
-      if (!response.ok) throw new Error('Failed to add astrologer');
+      await api.post(`${DASHBOARD_PREFIX}/astrologers`, astrologerData);
       
       await fetchAstrologers();
       resetForm();
@@ -198,15 +192,7 @@ const Dashboard: React.FC = () => {
         gallery: formData.gallery.split(',').map(s => s.trim()).filter(s => s),
       };
 
-      const response = await fetch(`${API_BASE_URL}/astrologers/${editingAstrologer._id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(astrologerData),
-      });
-
-      if (!response.ok) throw new Error('Failed to update astrologer');
+      await api.put(`${DASHBOARD_PREFIX}/astrologers/${editingAstrologer._id}`, astrologerData);
       
       await fetchAstrologers();
       resetForm();
@@ -220,11 +206,7 @@ const Dashboard: React.FC = () => {
     if (!window.confirm('Are you sure you want to delete this astrologer?')) return;
 
     try {
-      const response = await fetch(`${API_BASE_URL}/astrologers/${id}`, {
-        method: 'DELETE',
-      });
-
-      if (!response.ok) throw new Error('Failed to delete astrologer');
+      await api.delete(`${DASHBOARD_PREFIX}/astrologers/${id}`);
       
       await fetchAstrologers();
     } catch (err) {
@@ -235,11 +217,7 @@ const Dashboard: React.FC = () => {
   // Toggle astrologer status
   const handleToggleStatus = async (id: string) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/astrologers/${id}/toggle`, {
-        method: 'PATCH',
-      });
-
-      if (!response.ok) throw new Error('Failed to toggle astrologer status');
+      await api.patch(`${DASHBOARD_PREFIX}/astrologers/${id}/toggle`);
       
       await fetchAstrologers();
     } catch (err) {
