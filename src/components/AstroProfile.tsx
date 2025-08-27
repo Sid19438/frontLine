@@ -161,22 +161,20 @@ const AstroProfile = () => {
         />
         <div className="astro-info">
           <h2>{astrologer.name}</h2>
-          <div className="astro-expertise">{astrologer.expertise}</div>
-          <div className="astro-languages">{astrologer.languages}</div>
+          <div className="astro-expertise" style={{textAlign:'left', color:'gray'}} >{astrologer.expertise}</div>
+          <div className="astro-languages" style={{ color:'gray'}} >{astrologer.languages}</div>
           <div className="astro-meta">
-            <span>Reviews : <b>{astrologer.reviews.toLocaleString()}</b></span>
-            <span>Rating : {'★'.repeat(astrologer.rating)}</span>
-            <span>Exp : <b>{astrologer.experience} Years</b></span>
+            <span style={{ color:'gray'}} >Reviews : <b style={{ color:'gray'}} >{astrologer.reviews.toLocaleString()}</b></span>
+            <span style={{ color:'gray'}} >Rating : {'★'.repeat(astrologer.rating)}</span>
+            <span style={{ color:'gray'}} >Exp : <b style={{ color:'gray'}} >{astrologer.experience} Years</b></span>
           </div>
         </div>
-        <div className="astro-actions">
-          <button className="astro-consultation-btn" onClick={handleConsultation}>Consultation</button>
-        </div>
+       
       </div>
       
       {astrologer.plans && astrologer.plans.length > 0 && (
         <div className="astro-plans">
-          <h3 style={{color:'#2955af'}} >Exclusive Plans & Discounts By <span>{astrologer.name}</span></h3>
+          <h3 style={{color:'gray'}} >Exclusive Plans & Discounts </h3>
           <div className="plans-list">
             {astrologer.plans.map((plan, idx) => (
               <div className="plan-card" key={idx}>
@@ -184,12 +182,12 @@ const AstroProfile = () => {
                 {/* {plan.discount && plan.discount !== '' && (
                   <div className="plan-discount">{plan.discount}</div>
                 )} */}
-                <div className="plan-minutes">{plan.minutes} Minutes</div>
-                <div className="plan-label">{plan.label}</div>
+                <div className="plan-minutes" style={{color: '#764ba2'}} >{plan.minutes} Minutes</div>
+                <div className="plan-label" style={{color: plan.label == 'Audio Call' ? 'gray' : 'green'}}  >{plan.label}</div>
                 {/* <div className="plan-session">Session</div> */}
-                <div className="plan-rating">{'★'.repeat(plan.rating)}</div>
+                <div className="plan-rating" style={{color:'gray'}} >{'★'.repeat(plan.rating)}</div>
                 {/* <div className="plan-connect">Connect via <b>{plan.connect}</b></div> */}
-                <div className="plan-price">
+                <div className="plan-price" style={{color:'green'}} >
                   ₹{plan.price}
                 </div>
               </div>
@@ -200,18 +198,18 @@ const AstroProfile = () => {
       
       {astrologer.specializations && astrologer.specializations.length > 0 && (
         <div className="astro-specialization">
-          <h3>Specialization</h3>
+          <h3 style={{color:'gray'}} >Specialization</h3>
           <div className="specialization-list">
             {astrologer.specializations.map((spec, idx) => (
-              <span className="specialization-item" key={idx}>{spec}</span>
+              <span className="specialization-item" style={{color:'#fff'}} key={idx}>{spec}</span>
             ))}
           </div>
         </div>
       )}
       
       <div className="astro-about">
-        <h3>About My Services</h3>
-        <p>{astrologer.about}</p>
+        <h3 style={{color:'gray', }} >About My Services</h3>
+        <p style={{color:'gray', }} >{astrologer.about}</p>
       </div>
       
       {astrologer.gallery && astrologer.gallery.length > 0 && (
