@@ -28,8 +28,7 @@
   font-family: 'Playfair Display', serif;
   font-weight: 700;
   color: #fff;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  background: linear-gradient(45deg, #ffd600, #ffed4e, #fff);
+  background: linear-gradient(45deg, #157d6c, #0f5c69, #f96e6e);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -124,15 +123,15 @@
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 1rem;
-  border: 4px solid rgba(255, 214, 0, 0.6);
-  box-shadow: 0 8px 25px rgba(255, 214, 0, 0.3);
+  border: 4px solid rgba(47, 114, 197, 0.6);
+  box-shadow: 0 8px 25px rgba(67, 75, 187, 0.3);
   transition: all 0.3s ease;
   animation: float 4s ease-in-out infinite;
 }
 
 .astrologer-card:hover .astro-avatar {
-  border-color: rgba(255, 214, 0, 0.8);
-  box-shadow: 0 12px 35px rgba(255, 214, 0, 0.5);
+  border-color: rgba(90, 6, 169, 0.8);
+  box-shadow: 0 12px 35px rgba(118, 20, 151, 0.5);
   transform: scale(1.05);
 }
 
@@ -140,13 +139,13 @@
   font-weight: 600;
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
-  color: #fff;
+  color: #7a7a7a;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   font-family: 'Poppins', sans-serif;
 }
 
 .astro-expertise {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(128, 128, 128, 0.8);
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
   font-weight: 500;
@@ -156,36 +155,95 @@
 }
 
 .astro-experience {
-  color: rgba(255, 214, 0, 0.8);
+  color: rgba(142, 142, 142, 0.8);
   font-size: 0.85rem;
   margin-bottom: 0.5rem;
   font-weight: 500;
-  background: rgba(255, 214, 0, 0.1);
+  background: rgba(191, 166, 203, 0.1);
   padding: 0.3rem 0.8rem;
   border-radius: 15px;
-  border: 1px solid rgba(255, 214, 0, 0.3);
+  border: 1px solid rgba(145, 143, 143, 0.3);
+  margin-top: 0.5rem;
 }
 
 .astro-reviews {
-  color: rgba(255, 214, 0, 0.9);
+  color: rgba(148, 148, 148, 0.9);
   margin-bottom: 0.5rem;
   font-weight: 500;
   font-size: 0.95rem;
 }
 
 .review-count {
-  color: #ffd600;
+  color: #848484;
   font-weight: bold;
-  text-shadow: 0 2px 8px rgba(255, 214, 0, 0.4);
+  /* text-shadow: 0 2px 8px rgba(177, 177, 177, 0.4); */
 }
 
 .astro-rating {
-  color: #ffd600;
+  color: #838383;
   font-size: 1.3rem;
-  text-shadow: 0 2px 8px rgba(255, 214, 0, 0.4);
-  animation: glow 2s ease-in-out infinite;
+  /* text-shadow: 0 2px 8px rgba(136, 136, 136, 0.4); */
+  /* animation: glow 2s ease-in-out infinite; */
 }
 
+.see-all-container {
+  margin-top: 3rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.see-all-btn {
+  background: linear-gradient(135deg, #667eea, #764ba2, #667eea);
+  color: #fff;
+  border: none;
+  border-radius: 35px;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 10px 30px rgba(102, 126, 234, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.see-all-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transition: left 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  filter: blur(1px);
+}
+
+.see-all-btn:hover::before {
+  left: 100%;
+}
+
+.see-all-btn:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(102, 126, 234, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  background: linear-gradient(135deg, #764ba2, #667eea, #764ba2);
+}
+
+.see-all-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Additional Responsive Styles */
 @media (max-width: 700px) {
   .astrologers-section {
     padding: 3rem 1rem;
@@ -205,4 +263,147 @@
     min-width: 0;
     width: 100%;
   }
+  .see-all-btn {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* All Astrologers Page Carousel Styles */
+.astrologers-carousel-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  position: relative;
+}
+
+.astrologers-swiper {
+  padding: 2rem 0;
+}
+
+.astrologers-swiper .swiper-slide {
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.astrologers-swiper .astrologer-card {
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  padding: 2rem 1.5rem;
+  min-width: 200px;
+  max-width: 250px;
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.8s ease-out both;
+}
+
+.astrologers-swiper .astrologer-card:nth-child(1) { animation-delay: 0.1s; }
+.astrologers-swiper .astrologer-card:nth-child(2) { animation-delay: 0.2s; }
+.astrologers-swiper .astrologer-card:nth-child(3) { animation-delay: 0.3s; }
+.astrologers-swiper .astrologer-card:nth-child(4) { animation-delay: 0.4s; }
+.astrologers-swiper .astrologer-card:nth-child(5) { animation-delay: 0.5s; }
+
+.astrologers-swiper .astrologer-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s;
+}
+
+.astrologers-swiper .astrologer-card:hover::before {
+  left: 100%;
+}
+
+.astrologers-swiper .astrologer-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.astrologers-swiper .astrologer-card .astro-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 4px solid rgba(255, 214, 0, 0.6);
+  box-shadow: 0 8px 25px rgba(255, 214, 0, 0.3);
+  transition: all 0.3s ease;
+  animation: float 4s ease-in-out infinite;
+}
+
+.astrologers-swiper .astrologer-card:hover .astro-avatar {
+  border-color: rgba(46, 36, 158, 0.8);
+  box-shadow: 0 12px 35px rgba(96, 38, 167, 0.5);
+  transform: scale(1.05);
+}
+
+.astrologers-swiper .astrologer-card .astro-name {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #6e6e6e;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  font-family: 'Poppins', sans-serif;
+}
+
+.astrologers-swiper .astrologer-card .astro-expertise {
+  color: rgba(106, 106, 106, 0.8);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  font-style: italic;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.astrologers-swiper .astrologer-card .astro-experience {
+  color: rgba(145, 145, 145, 0.8);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  background: rgba(83, 81, 86, 0.1);
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  border: 1px solid rgba(73, 62, 163, 0.3);
+}
+
+.astrologers-swiper .astrologer-card .astro-reviews {
+  color: rgba(148, 148, 148, 0.9);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.astrologers-swiper .astrologer-card .review-count {
+  color: #6e6e6e;
+  font-weight: bold;
+  text-shadow: 0 2px 8px rgba(78, 35, 118, 0.4);
+}
+
+.astrologers-swiper .astrologer-card .astro-rating {
+  color: #3c51b7;
+  font-size: 1.3rem;
+  text-shadow: 0 2px 8px rgba(84, 29, 134, 0.4);
+  animation: glow 2s ease-in-out infinite;
+  margin-bottom: 0.4rem;
 } 

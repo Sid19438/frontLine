@@ -10,6 +10,7 @@ import ReviewSection from './components/ReviewSection';
 import WhyAstrology from './components/WhyAstrology';
 import CategorySection from './components/CategorySection';
 import Dashboard from './components/Dashboard';
+import AllAstrologers from './components/AllAstrologers';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -20,9 +21,11 @@ function App() {
         <Routes>
           <Route path="/" element={
             <>
-              <Banner />
-              <CategorySection />
+             <Banner />
+             <CategorySection />
+           
               <Astrologers />
+             
               {/* Services Info Section Start */}
               <section className="services-info-section">
                 <h2 className="services-title">Our Services</h2>
@@ -43,6 +46,14 @@ function App() {
                       Get clarity and solutions for your concerns with a confidential, personalized consultation.
                     </p>
                   </div>
+                  <div className="service-card">
+                    <h3>E-Commerce</h3>
+                    <p>
+                      Discover authentic gemstones, rudraksha, yantras, and other powerful astrological remedies to enhance your life. <br/>
+                      <b>Products available:</b> Natural gemstones, rudraksha beads, yantras, crystals, incense, sacred items, and more. <br/>
+                      Each product is carefully selected and energized for maximum effectiveness in your spiritual journey.
+                    </p>
+                  </div>
                 </div>
               </section>
               {/* Services Info Section End */}
@@ -53,6 +64,7 @@ function App() {
             </>
           } />
           <Route path="/astrologer/:name" element={<AstroProfile />} />
+          <Route path="/all-astrologers" element={<AllAstrologers />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </div>

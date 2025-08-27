@@ -16,7 +16,7 @@ const LivePuja = () => {
   const listRef = useRef<HTMLDivElement>(null);
   const [startIdx, setStartIdx] = useState(0);
 
-  const visibleCards = 3;
+  const visibleCards = 2;
 
   const handleScroll = (dir: 'left' | 'right') => {
     let newIdx = startIdx + (dir === 'right' ? 1 : -1);
@@ -45,12 +45,12 @@ const LivePuja = () => {
         <div className="livepuja-right">
           <button className="puja-scroll-btn left" onClick={() => handleScroll('left')} disabled={startIdx === 0}>&lt;</button>
           <div className="puja-list" ref={listRef} style={{scrollbarWidth: 'none'}}>
-            {pujas.map((puja, idx) => (
+            {pujas.slice(0, 2).map((puja, idx) => (
               <div className="puja-card" key={idx} style={{ minWidth: 200, maxWidth: 200 }}>
                 <img src={puja.img} alt={puja.name} className="puja-img" />
                 <div className="puja-name">{puja.name}</div>
                 <div className="puja-price">
-                  {puja.oldPrice && <span className="puja-oldprice">₹{puja.oldPrice}</span>} ₹{puja.price}
+                  ₹{puja.price}
                 </div>
                 <button className="book-puja-btn">Book Puja</button>
               </div>

@@ -97,8 +97,8 @@
   height: 130px;
   border-radius: 50%;
   object-fit: cover;
-  border: 5px solid rgba(255, 214, 0, 0.6);
-  box-shadow: 0 12px 35px rgba(255, 214, 0, 0.3);
+  border: 5px solid rgba(227, 227, 227, 0.6);
+  box-shadow: 0 12px 35px rgba(167, 167, 166, 0.3);
   transition: all 0.3s ease;
   animation: float 4s ease-in-out infinite;
 }

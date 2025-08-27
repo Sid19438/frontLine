@@ -2,7 +2,7 @@
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  padding: 4rem 2rem;
+  padding: 3rem 4rem 4rem 6rem;
   text-align: left;
   position: relative;
   overflow: hidden;
@@ -24,14 +24,14 @@
 
 .livepuja-title {
   text-align: center;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   letter-spacing: 2px;
   font-family: 'Playfair Display', serif;
   color: #fff;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  background: linear-gradient(45deg, #ffd600, #ffed4e, #fff);
+  background: linear-gradient(45deg, #157d6c, #0f5c69, #f96e6e);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -42,7 +42,7 @@
 .livepuja-content {
   display: flex;
   flex-direction: row;
-  gap: 3rem;
+  gap: 2.5rem;
   max-width: 1400px;
   margin: 0 auto;
   align-items: stretch;
@@ -52,50 +52,55 @@
 }
 
 .livepuja-left {
-  flex: 0 0 450px;
-  min-width: 380px;
-  max-width: 480px;
+  flex: 0 0 400px;
+  min-width: 350px;
+  max-width: 420px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1rem;
   animation: fadeInLeft 1s ease-out 1.4s both;
 }
 
 .livepuja-left h3 {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   color: #fff;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   font-family: 'Playfair Display', serif;
-  line-height: 1.3;
+  line-height: 1.2;
 }
 
 .livepuja-left p {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  line-height: 1.8;
-  font-weight: 300;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  font-weight: 400;
+  text-shadow: none;
 }
 
 .browse-puja-btn {
-  background: linear-gradient(45deg, #ffd600, #ffed4e);
-  color: #222;
+  background: linear-gradient(135deg, #667eea, #764ba2, #667eea);
+  color: #fff;
   border: none;
-  border-radius: 30px;
+  border-radius: 35px;
   padding: 1rem 2.5rem;
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 25px rgba(255, 214, 0, 0.4);
+  box-shadow: 
+    0 10px 30px rgba(102, 126, 234, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
   font-family: 'Poppins', sans-serif;
-  margin-top: 0.5rem;
+  margin-top: 0.3rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 .browse-puja-btn::before {
@@ -105,8 +110,9 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  transition: left 0.6s;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transition: left 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  filter: blur(1px);
 }
 
 .browse-puja-btn:hover::before {
@@ -114,100 +120,59 @@
 }
 
 .browse-puja-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(255, 214, 0, 0.6);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(102, 126, 234, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  background: linear-gradient(135deg, #764ba2, #667eea, #764ba2);
 }
 
 .livepuja-right {
   flex: 1 1 0;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   min-width: 400px;
   animation: fadeInRight 1s ease-out 1.6s both;
 }
 
 .puja-scroll-btn {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #fff;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin: 0 1rem;
-  position: relative;
-  overflow: hidden;
+  display: none;
 }
 
-.puja-scroll-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s;
-}
-
-.puja-scroll-btn:hover::before {
-  left: 100%;
-}
-
-.puja-scroll-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.5);
-  transform: scale(1.1);
-}
-
+.puja-scroll-btn::before,
+.puja-scroll-btn:hover::before,
+.puja-scroll-btn:hover,
 .puja-scroll-btn:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
+  display: none;
 }
 
 .puja-list {
   display: flex;
-  gap: 2rem;
+  gap: 4rem;
   flex-wrap: nowrap;
-  overflow-x: auto;
-  padding-bottom: 1rem;
-  scroll-behavior: smooth;
+  justify-content: center;
+  padding: 2rem 2rem 2rem 3rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.puja-list::-webkit-scrollbar {
-  height: 6px;
-}
-
-.puja-list::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-}
-
-.puja-list::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, #ffd600, #ffed4e);
-  border-radius: 10px;
-}
+/* Scrollbar styles removed - no longer needed */
 
 .puja-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 24px;
   box-shadow: 
-    0 15px 35px rgba(0, 0, 0, 0.2),
-    0 0 0 1px rgba(255, 255, 255, 0.1);
-  padding: 1.5rem;
-  min-width: 250px;
-  max-width: 280px;
-  flex: 0 0 250px;
+    0 20px 40px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  padding: 1.8rem;
+  min-width: 320px;
+  max-width: 350px;
+  flex: 0 0 320px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -215,6 +180,8 @@
   position: relative;
   overflow: hidden;
   animation: fadeInUp 0.8s ease-out both;
+  margin: 1.5rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .puja-card:nth-child(1) { animation-delay: 0.1s; }
@@ -240,21 +207,24 @@
 }
 
 .puja-card:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-12px) scale(1.03);
   box-shadow: 
-    0 25px 50px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(255, 255, 255, 0.2);
+    0 30px 60px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.12));
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 .puja-img {
-  width: 140px;
+  width: 200px;
   height: 140px;
-  object-fit: cover;
+  object-fit: contain;
   margin-bottom: 1rem;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-  animation: float 5s ease-in-out infinite;
+  border-radius: 20px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transition: all 0.4s ease;
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .puja-card:hover .puja-img {
@@ -263,21 +233,23 @@
 }
 
 .puja-name {
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
   text-align: center;
-  color: #fff;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.3px;
 }
 
 .puja-price {
-  color: #ffd600;
-  font-weight: bold;
-  margin-bottom: 1rem;
+  color: #764ba2;
+  font-weight: 800;
+  margin-bottom: 0.8rem;
   font-size: 1.2rem;
-  text-shadow: 0 2px 8px rgba(255, 214, 0, 0.4);
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.2px;
 }
 
 .puja-oldprice {
@@ -288,9 +260,11 @@
 }
 
 .book-puja-btn {
-  background: linear-gradient(45deg, #ffd600, #ffed4e);
-  color: #222;
-  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: #808080;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 25px;
   padding: 0.8rem 1.5rem;
   font-size: 1rem;
@@ -299,7 +273,7 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 6px 20px rgba(255, 214, 0, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   font-family: 'Poppins', sans-serif;
 }
 
@@ -319,8 +293,10 @@
 }
 
 .book-puja-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(255, 214, 0, 0.6);
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 900px) {

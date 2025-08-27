@@ -7,7 +7,6 @@ const categories = [
   { name: 'Education', icon: '📚' },
   { name: 'Business', icon: '💼' },
   { name: 'Health', icon: '🩺' },
-  { name: 'Career', icon: '🚀' },
   { name: 'Family', icon: '👨‍👩‍👧‍👦' },
 ];
 

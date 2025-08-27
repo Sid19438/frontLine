@@ -37,6 +37,8 @@ const Dashboard: React.FC = () => {
   const [error, setError] = useState('');
   const [showAddForm, setShowAddForm] = useState(false);
   const [editingAstrologer, setEditingAstrologer] = useState<Astrologer | null>(null);
+  const [banners, setBanners] = useState<any[]>([]);
+  const [bannerForm, setBannerForm] = useState({ title: '', imageUrl: '', isActive: true });
   
   // Form states
   const [formData, setFormData] = useState({
@@ -64,6 +66,7 @@ const Dashboard: React.FC = () => {
 
   const DASHBOARD_PREFIX = '/dashboard';
   const WEBSITE_PREFIX = '/website';
+  const BANNER_LIMIT = 4;
 
   // Fetch astrologers
   const fetchAstrologers = async () => {
@@ -82,6 +85,7 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     fetchAstrologers();
+    fetchBanners();
   }, []);
 
   // Handle form input changes
@@ -90,6 +94,45 @@ const Dashboard: React.FC = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
+  };
+
+  // Banner APIs
+  const fetchBanners = async () => {
+    try {
+      const { data } = await api.get(`${WEBSITE_PREFIX}/banners`);
+      setBanners(data);
+    } catch (err) {
+      setError('Failed to load banners');
+    }
+  };
+
+  const handleBannerInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value, type, checked } = e.target;
+    setBannerForm((prev) => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
+  };
+
+  const addBanner = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      if (banners.length >= BANNER_LIMIT) {
+        setError('Maximum of 4 banners allowed');
+        return;
+      }
+      await api.post(`${DASHBOARD_PREFIX}/banners`, bannerForm);
+      setBannerForm({ title: '', imageUrl: '', isActive: true });
+      await fetchBanners();
+    } catch (err) {
+      setError('Failed to add banner');
+    }
+  };
+
+  const deleteBanner = async (id: string) => {
+    try {
+      await api.delete(`${DASHBOARD_PREFIX}/banners/${id}`);
+      await fetchBanners();
+    } catch (err) {
+      setError('Failed to delete banner');
+    }
   };
 
   // Handle plan input changes
@@ -471,6 +514,53 @@ const Dashboard: React.FC = () => {
           </form>
         </div>
       )}
+
+      {/* Banners Manager */}
+      <div className="products-section">
+        <h2>Banners ({banners.length}/{BANNER_LIMIT})</h2>
+        <form onSubmit={addBanner} className="form-container" style={{ marginBottom: 16 }}>
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="bannerTitle">Title:</label>
+              <input id="bannerTitle" name="title" value={bannerForm.title} onChange={handleBannerInput} required />
+            </div>
+            <div className="form-group">
+              <label htmlFor="bannerImage">Image URL:</label>
+              <input id="bannerImage" name="imageUrl" value={bannerForm.imageUrl} onChange={handleBannerInput} required />
+            </div>
+            <div className="form-group" style={{ display: 'flex', alignItems: 'center' }}>
+              <label htmlFor="bannerActive" style={{ marginRight: 8 }}>Active:</label>
+              <input id="bannerActive" type="checkbox" name="isActive" checked={bannerForm.isActive} onChange={handleBannerInput} />
+            </div>
+          </div>
+          <div className="form-actions">
+            <button type="submit" className="submit-btn">Add Banner</button>
+          </div>
+        </form>
+
+        {banners.length === 0 ? (
+          <div className="no-products">
+            <p>No banners yet. Add up to 4.</p>
+          </div>
+        ) : (
+          <div className="products-grid">
+            {banners.map((b: any) => (
+              <div key={b._id} className="product-card">
+                <div className="product-info">
+                  <img src={b.imageUrl} alt={b.title} className="astro-avatar-small" />
+                  <h3 style={{ marginTop: 8 }}>{b.title}</h3>
+                  <div className="status-indicator">
+                    Status: <span className={b.isActive ? 'active' : 'inactive'}>{b.isActive ? 'Active' : 'Inactive'}</span>
+                  </div>
+                </div>
+                <div className="product-actions">
+                  <button className="delete-btn" onClick={() => deleteBanner(b._id)}>Delete</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
 
       {/* Astrologers List */}
       <div className="products-section">
