@@ -318,12 +318,12 @@ const AllAstrologers = () => {
       <Header />
       <section className="astrologers-section">
         <h2>All Our Astrologers</h2>
-        <p>Discover our complete team of expert astrologers ready to guide you</p>
+        <p style={{color: '#7a7a7a'}} >Discover our complete team of expert astrologers ready to guide you</p>
 
         <div className="astrologers-carousel-container">
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
-            spaceBetween={30}
+            spaceBetween={14}
             slidesPerView={1}
             navigation={true}
             pagination={{ clickable: true }}
@@ -353,7 +353,7 @@ const AllAstrologers = () => {
                 <div
                   className="astrologer-card"
                   onClick={() => navigate(`/astrologer/${encodeURIComponent(astro.name)}`)}
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: 'pointer', marginTop: '1rem', marginBottom: '3rem' }}
                 >
                   <img src={astro.avatar} alt={astro.name} className="astro-avatar" />
                   <div className="astro-name">{astro.name}</div>
@@ -367,7 +367,7 @@ const AllAstrologers = () => {
           </Swiper>
         </div>
 
-        <div className="see-all-container">
+        <div className="see-all-container" style={{marginBottom: '2rem'}} >
           <button
             className="see-all-btn"
             onClick={() => navigate('/')}
