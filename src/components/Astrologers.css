@@ -126,7 +126,6 @@
   border: 4px solid rgba(47, 114, 197, 0.6);
   box-shadow: 0 8px 25px rgba(67, 75, 187, 0.3);
   transition: all 0.3s ease;
-  animation: float 4s ease-in-out infinite;
 }
 
 .astrologer-card:hover .astro-avatar {
@@ -154,7 +153,7 @@
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
   font-weight: 500;
-  font-style: italic;
+  /* font-style: italic; */
   text-align: center;
   line-height: 1.3;
   white-space: nowrap;   /* text ko break hone se rokega */
@@ -358,7 +357,6 @@
   border: 4px solid rgba(255, 214, 0, 0.6);
   box-shadow: 0 8px 25px rgba(255, 214, 0, 0.3);
   transition: all 0.3s ease;
-  animation: float 4s ease-in-out infinite;
 }
 
 .astrologers-swiper .astrologer-card:hover .astro-avatar {

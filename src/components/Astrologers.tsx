@@ -1,103 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './Astrologers.css';
 import { useNavigate } from 'react-router-dom';
-
-interface Astrologer {
-  _id: string;
-  name: string;
-  expertise: string;
-  languages: string;
-  reviews: number;
-  rating: number;
-  experience: number;
-  avatar: string;
-  about: string;
-  specializations: string[];
-  plans: any[];
-  gallery: string[];
-  isActive: boolean;
-  consultationUrl?: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
-// Dummy data for when backend is not available
-const dummyAstrologers: Astrologer[] = [
-  {
-    _id: '1',
-    name: 'Pandit Rajesh Kumar',
-    expertise: 'Vedic Astrology & Palmistry',
-    languages: 'Hindi, English',
-    reviews: 1247,
-    rating: 5,
-    experience: 15,
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
-    about: 'Expert in Vedic astrology with 15+ years of experience',
-    specializations: ['Marriage', 'Career', 'Health'],
-    plans: [],
-    gallery: [],
-    isActive: true,
-    createdAt: '2024-01-01',
-    updatedAt: '2024-01-01'
-  },
-  {
-    _id: '2',
-    name: 'Dr. Priya Sharma',
-    expertise: 'Numerology & Gemstone Therapy',
-    languages: 'Hindi, English, Sanskrit',
-    reviews: 892,
-    rating: 5,
-    experience: 12,
-    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
-    about: 'Specialist in numerology and gemstone remedies',
-    specializations: ['Business', 'Education', 'Relationships'],
-    plans: [],
-    gallery: [],
-    isActive: true,
-    createdAt: '2024-01-01',
-    updatedAt: '2024-01-01'
-  },
-  {
-    _id: '3',
-    name: 'Acharya Amit Patel',
-    expertise: 'Kundli Analysis & Remedies',
-    languages: 'Hindi, English, Gujarati',
-    reviews: 1563,
-    rating: 5,
-    experience: 18,
-    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
-    about: 'Master of Kundli analysis and spiritual remedies',
-    specializations: ['Marriage', 'Family', 'Spiritual Growth'],
-    plans: [],
-    gallery: [],
-    isActive: true,
-    createdAt: '2024-01-01',
-    updatedAt: '2024-01-01'
-  },
-  {
-    _id: '4',
-    name: 'Mataji Sunita Devi',
-    expertise: 'Tantra & Spiritual Healing',
-    languages: 'Hindi, English, Bengali',
-    reviews: 2034,
-    rating: 5,
-    experience: 22,
-    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
-    about: 'Renowned spiritual healer and tantra expert',
-    specializations: ['Spiritual Healing', 'Protection', 'Peace'],
-    plans: [],
-    gallery: [],
-    isActive: true,
-    createdAt: '2024-01-01',
-    updatedAt: '2024-01-01'
-  }
-];
+import { dummyAstrologers, type Astrologer } from '../utils/dummyData';
 
 const Astrologers = () => {
   const navigate = useNavigate();
-  const [astrologers, setAstrologers] = useState<Astrologer[]>(dummyAstrologers); // Initialize with dummy data
-  const [loading, setLoading] = useState(false); // Start with false since we have dummy data
+  const [astrologers, setAstrologers] = useState<Astrologer[]>(dummyAstrologers);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [isUsingDummyData, setIsUsingDummyData] = useState(true);
 
   useEffect(() => {
     fetchAstrologers();
@@ -105,20 +16,50 @@ const Astrologers = () => {
 
   const fetchAstrologers = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/website/astrologers');
+      setLoading(true);
+      setError('');
+      
+      const response = await fetch('http://localhost:5000/api/website/astrologers', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // Add timeout to prevent long waits
+        signal: AbortSignal.timeout(5000)
+      });
+      
       if (!response.ok) {
-        throw new Error('Failed to fetch astrologers');
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
+      
       const data = await response.json();
+      
       // Only show active astrologers on the website
       const activeAstrologers = data.filter((astro: Astrologer) => astro.isActive);
+      
       if (activeAstrologers.length > 0) {
-        setAstrologers(activeAstrologers); // Replace with real data if available
+        setAstrologers(activeAstrologers);
+        setIsUsingDummyData(false);
+        console.log('Successfully loaded real astrologer data');
+      } else {
+        console.log('No active astrologers found, using dummy data');
+        setIsUsingDummyData(true);
       }
-      // Keep dummy data if no real astrologers found
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error fetching astrologers:', err);
+      
+      if (err.name === 'AbortError') {
+        setError('Request timeout - using demo data');
+      } else if (err.message.includes('Failed to fetch')) {
+        setError('Backend not available - using demo data');
+      } else {
+        setError('Error loading data - using demo data');
+      }
+      
       // Keep dummy data when backend is not available
+      setIsUsingDummyData(true);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -130,6 +71,49 @@ const Astrologers = () => {
       <h2>Our Astrologers</h2>
       <p style={{color: '#7a7a7a'}} >Get in touch with the best Online Astrologers, anytime & anywhere!</p>
       
+      {/* Show status indicator */}
+      {isUsingDummyData && (
+        <div style={{
+          background: '#fff3cd',
+          color: '#856404',
+          padding: '10px',
+          borderRadius: '5px',
+          marginBottom: '20px',
+          textAlign: 'center',
+          fontSize: '14px'
+        }}>
+          📱 Demo Mode: Showing sample astrologer profiles
+        </div>
+      )}
+      
+      {loading && (
+        <div style={{
+          background: '#d1ecf1',
+          color: '#0c5460',
+          padding: '10px',
+          borderRadius: '5px',
+          marginBottom: '20px',
+          textAlign: 'center',
+          fontSize: '14px'
+        }}>
+          🔄 Loading astrologer profiles...
+        </div>
+      )}
+      
+      {error && !isUsingDummyData && (
+        <div style={{
+          background: '#f8d7da',
+          color: '#721c24',
+          padding: '10px',
+          borderRadius: '5px',
+          marginBottom: '20px',
+          textAlign: 'center',
+          fontSize: '14px'
+        }}>
+          ⚠️ {error}
+        </div>
+      )}
+      
       <div className="astrologers-list">
         {topAstrologers.map((astro) => (
           <div
@@ -138,10 +122,19 @@ const Astrologers = () => {
             onClick={() => navigate(`/astrologer/${encodeURIComponent(astro.name)}`)}
             style={{ cursor: 'pointer' }}
           >
-            <img src={astro.avatar} alt={astro.name} className="astro-avatar" />
+            <img 
+              src={astro.avatar} 
+              alt={astro.name} 
+              className="astro-avatar"
+              onError={(e) => {
+                // Fallback avatar if image fails to load
+                const target = e.target as HTMLImageElement;
+                target.src = 'https://via.placeholder.com/150x150/4a90e2/ffffff?text=Astrologer';
+              }}
+            />
             <div className="astro-name">{astro.name}</div>
-            {/* <div className="astro-expertise">{astro.expertise}</div> */}
-            <div className="astro-reviews">Reviews : <span className="review-count">{astro.reviews}</span></div>
+            <div className="astro-expertise">{astro.expertise}</div>
+            <div className="astro-reviews">Reviews : <span className="review-count">{astro.reviews.toLocaleString()}</span></div>
             <div className="astro-rating">{'★'.repeat(astro.rating)}</div>
             <div className="astro-experience">{astro.experience} years experience</div>
           </div>

@@ -55,7 +55,6 @@
 .logo-icon {
   font-size: 2.5rem;
   margin-right: 0.8rem;
-  animation: float 3s ease-in-out infinite;
   filter: drop-shadow(0 4px 8px rgba(255, 214, 0, 0.4));
 }
 

@@ -72,15 +72,6 @@ body, html, #root, .App {
   }
 }
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
 @keyframes shimmer {
   0% {
     background-position: -200px 0;
