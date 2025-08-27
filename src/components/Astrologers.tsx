@@ -128,7 +128,7 @@ const Astrologers = () => {
   return (
     <section className="astrologers-section">
       <h2>Our Astrologers</h2>
-      <p>Get in touch with the best Online Astrologers, anytime & anywhere!</p>
+      <p style={{color: '#7a7a7a'}} >Get in touch with the best Online Astrologers, anytime & anywhere!</p>
       
       <div className="astrologers-list">
         {topAstrologers.map((astro) => (
