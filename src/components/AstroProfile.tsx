@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './AstroProfile.css';
 import { dummyAstrologers, type Astrologer, type Plan } from '../utils/dummyData';
+import BookingForm from './BookingForm';
 
 const AstroProfile = () => {
   const { name } = useParams<{ name: string }>();
@@ -11,6 +12,7 @@ const AstroProfile = () => {
   const [error, setError] = useState('');
   const [isUsingDummyData, setIsUsingDummyData] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<Plan | null>(null);
+  const [isBookingFormOpen, setIsBookingFormOpen] = useState(false);
 
   useEffect(() => {
     if (name) {
@@ -108,10 +110,8 @@ const AstroProfile = () => {
 
   const handleBooking = () => {
     if (selectedPackage) {
-      // In a real application, you would redirect to a booking page
-      // For now, we'll just show a message
-      alert(`Booking for ${selectedPackage.minutes} min ${selectedPackage.label} (₹${selectedPackage.price})`);
-      // Example: navigate(`/booking/${astrologer?.id}?package=${selectedPackage.id}`);
+      // Open the booking form instead of showing alert
+      setIsBookingFormOpen(true);
     }
   };
 
@@ -295,8 +295,16 @@ const AstroProfile = () => {
           </div>
         </div>
       )}
+
+      {/* Booking Form Modal */}
+      <BookingForm
+        isOpen={isBookingFormOpen}
+        onClose={() => setIsBookingFormOpen(false)}
+        selectedPackage={selectedPackage}
+        astrologerName={astrologer?.name || ''}
+      />
       
-      {astrologer.specializations && astrologer.specializations.length > 0 && (
+      {astrologer?.specializations && astrologer.specializations.length > 0 && (
         <div className="astro-specialization">
           <h3 style={{color:'gray'}} >Specialization</h3>
           <div className="specialization-list">
@@ -309,10 +317,10 @@ const AstroProfile = () => {
       
       <div className="astro-about">
         <h3 style={{color:'gray', }} >About My Services</h3>
-        <p style={{color:'gray', }} >{astrologer.about}</p>
+        <p style={{color:'gray', }} >{astrologer?.about}</p>
       </div>
       
-      {astrologer.gallery && astrologer.gallery.length > 0 && (
+      {astrologer?.gallery && astrologer.gallery.length > 0 && (
         <div className="astro-gallery">
           <h3>Gallery</h3>
           <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
