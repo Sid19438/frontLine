@@ -10,6 +10,7 @@ const AstroProfile = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [isUsingDummyData, setIsUsingDummyData] = useState(false);
+  const [selectedPackage, setSelectedPackage] = useState<Plan | null>(null);
 
   useEffect(() => {
     if (name) {
@@ -101,6 +102,19 @@ const AstroProfile = () => {
     }
   };
 
+  const handlePackageSelection = (plan: Plan) => {
+    setSelectedPackage(plan);
+  };
+
+  const handleBooking = () => {
+    if (selectedPackage) {
+      // In a real application, you would redirect to a booking page
+      // For now, we'll just show a message
+      alert(`Booking for ${selectedPackage.minutes} min ${selectedPackage.label} (₹${selectedPackage.price})`);
+      // Example: navigate(`/booking/${astrologer?.id}?package=${selectedPackage.id}`);
+    }
+  };
+
   if (loading) {
     return (
       <div className="astro-profile">
@@ -177,21 +191,107 @@ const AstroProfile = () => {
           <h3 style={{color:'gray'}} >Exclusive Plans & Discounts </h3>
           <div className="plans-list">
             {astrologer.plans.map((plan, idx) => (
-              <div className="plan-card" key={idx}>
-                
-                {/* {plan.discount && plan.discount !== '' && (
-                  <div className="plan-discount">{plan.discount}</div>
-                )} */}
-                <div className="plan-minutes" style={{color: '#764ba2'}} >{plan.minutes} Minutes</div>
-                <div className="plan-label" style={{color: plan.label == 'Audio Call' ? 'gray' : 'green'}}  >{plan.label}</div>
-                {/* <div className="plan-session">Session</div> */}
+              <div 
+                className="plan-card" 
+                key={idx}
+                onClick={() => handlePackageSelection(plan)}
+                style={{ 
+                  cursor: 'pointer',
+                  background: selectedPackage === plan ? 'rgba(255, 214, 0, 0.15)' : 'rgba(255, 255, 255, 0.1)',
+                  border: selectedPackage === plan ? '2px solid #ffd600' : '1px solid rgba(255, 255, 255, 0.1)',
+                  boxShadow: selectedPackage === plan 
+                    ? '0 20px 40px rgba(255, 214, 0, 0.3), 0 0 0 1px rgba(255, 214, 0, 0.4)' 
+                    : '0 15px 35px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1)',
+                  transform: selectedPackage === plan ? 'translateY(-5px)' : 'none',
+                  transition: 'all 0.4s ease',
+                  position: 'relative'
+                }}
+              >
+                {selectedPackage === plan && (
+                  <div style={{
+                    position: 'absolute',
+                    top: '10px',
+                    right: '10px',
+                    background: '#43a047',
+                    color: 'white',
+                    borderRadius: '50%',
+                    width: '24px',
+                    height: '24px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '14px',
+                    fontWeight: 'bold',
+                    zIndex: 10
+                  }}>
+                    ✓
+                  </div>
+                )}
+                <div className="plan-minutes" style={{
+                  color: selectedPackage === plan ? '#ffd600' : '#764ba2',
+                  textShadow: selectedPackage === plan ? '0 2px 10px rgba(255, 214, 0, 0.4)' : 'none'
+                }} >{plan.minutes} Minutes</div>
+                <div className="plan-label" style={{
+                  color: selectedPackage === plan ? '#ffd600' : (plan.label == 'Audio Call' ? 'gray' : 'green'),
+                  textShadow: selectedPackage === plan ? '0 2px 8px rgba(255, 214, 0, 0.4)' : 'none'
+                }}  >{plan.label}</div>
                 <div className="plan-rating" style={{color:'gray'}} >{'★'.repeat(plan.rating)}</div>
-                {/* <div className="plan-connect">Connect via <b>{plan.connect}</b></div> */}
-                <div className="plan-price" style={{color:'green'}} >
+                <div className="plan-price" style={{
+                  color: selectedPackage === plan ? '#ffd600' : 'green',
+                  textShadow: selectedPackage === plan ? '0 2px 8px rgba(255, 214, 0, 0.4)' : 'none'
+                }} >
                   ₹{plan.price}
                 </div>
               </div>
             ))}
+          </div>
+          
+          {/* Book Now Button */}
+          <div style={{ textAlign: 'center', marginTop: '30px' }}>
+            <button 
+              onClick={handleBooking}
+              disabled={!selectedPackage}
+              style={{
+                background: selectedPackage 
+                  ? 'linear-gradient(135deg, #43a047 0%, #66bb6a 100%)' 
+                  : 'linear-gradient(135deg, #9e9e9e 0%, #757575 100%)',
+                color: 'white',
+                border: '2px solid transparent',
+                padding: '18px 40px',
+                borderRadius: '50px',
+                fontSize: '1.2rem',
+                fontWeight: '700',
+                cursor: selectedPackage ? 'pointer' : 'not-allowed',
+                transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                boxShadow: selectedPackage 
+                  ? '0 10px 30px rgba(67, 160, 71, 0.5)' 
+                  : '0 4px 15px rgba(158, 158, 158, 0.3)',
+                minWidth: '320px',
+                position: 'relative',
+                overflow: 'hidden',
+                textTransform: 'uppercase' as const,
+                letterSpacing: '1px',
+                fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+                opacity: selectedPackage ? 1 : 0.7,
+                transform: selectedPackage ? 'translateY(-2px)' : 'none'
+              }}
+              onMouseEnter={(e) => {
+                const target = e.target as HTMLButtonElement;
+                if (selectedPackage) {
+                  target.style.transform = 'translateY(-5px)';
+                  target.style.boxShadow = '0 20px 40px rgba(67, 160, 71, 0.7)';
+                }
+              }}
+              onMouseLeave={(e) => {
+                const target = e.target as HTMLButtonElement;
+                if (selectedPackage) {
+                  target.style.transform = 'translateY(-2px)';
+                  target.style.boxShadow = '0 10px 30px rgba(67, 160, 71, 0.5)';
+                }
+              }}
+            >
+              {selectedPackage ? `Book Now - ${selectedPackage.minutes} min ${selectedPackage.label} (₹${selectedPackage.price})` : 'Select a package to book'}
+            </button>
           </div>
         </div>
       )}
