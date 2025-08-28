@@ -5,9 +5,9 @@
 }
 
 .booking-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  background: white;
+  /* background: white; */
   border-radius: 20px;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -18,9 +18,10 @@
   flex-direction: column;
   align-items: center;
   padding: 40px 30px;
-  border-bottom: 2px solid #f0f0f0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  /* border-bottom: 2px solid #f0f0f0; */
+  background-color: transparent;
+  /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+  /* color: white; */
   text-align: center;
 }
 
@@ -286,6 +287,9 @@
 @media (max-width: 900px) {
   .booking-content {
     grid-template-columns: 1fr;
+  }
+  .package-details {
+    border-radius: 0;
   }
 }
 

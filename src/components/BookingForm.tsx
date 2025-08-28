@@ -37,11 +37,15 @@ const BookingForm: React.FC<BookingFormProps> = ({ selectedPackage, astrologerNa
 
   return (
     <div className="booking-page">
-      <div className="booking-container">
-        <div className="booking-header">
-          <h2>Book a Call Consultation</h2>
-          <p>Complete your booking details and proceed to payment</p>
+          <div className="booking-header">
+          <h2 style={{color:'#764ba2'}} >Book a Call Consultation</h2>
+          <p style={{color:'#764ba2'}} >Complete your booking details and proceed to payment</p>
         </div>
+      <div className="booking-container">
+        {/* <div className="booking-header">
+          <h2 style={{color:'#764ba2'}} >Book a Call Consultation</h2>
+          <p style={{color:'#764ba2'}} >Complete your booking details and proceed to payment</p>
+        </div> */}
         
         <div className="booking-content">
           {/* Left Side - Package Details */}
