@@ -2,13 +2,11 @@ import React, { useState } from 'react';
 import './BookingForm.css';
 
 interface BookingFormProps {
-  isOpen: boolean;
-  onClose: () => void;
   selectedPackage: any;
   astrologerName: string;
 }
 
-const BookingForm: React.FC<BookingFormProps> = ({ isOpen, onClose, selectedPackage, astrologerName }) => {
+const BookingForm: React.FC<BookingFormProps> = ({ selectedPackage, astrologerName }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -37,14 +35,12 @@ const BookingForm: React.FC<BookingFormProps> = ({ isOpen, onClose, selectedPack
     alert('Booking form submitted successfully! Redirecting to payment...');
   };
 
-  if (!isOpen) return null;
-
   return (
-    <div className="booking-overlay" onClick={onClose}>
-      <div className="booking-modal" onClick={(e) => e.stopPropagation()}>
+    <div className="booking-page">
+      <div className="booking-container">
         <div className="booking-header">
           <h2>Book a Call Consultation</h2>
-          <button className="close-btn" onClick={onClose}>×</button>
+          <p>Complete your booking details and proceed to payment</p>
         </div>
         
         <div className="booking-content">

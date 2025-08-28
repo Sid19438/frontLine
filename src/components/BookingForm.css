@@ -1,74 +1,39 @@
-.booking-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
+.booking-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9ff 0%, #e8ecff 100%);
   padding: 20px;
 }
 
-.booking-modal {
+.booking-container {
+  max-width: 1200px;
+  margin: 0 auto;
   background: white;
   border-radius: 20px;
-  max-width: 1200px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-  animation: slideIn 0.3s ease-out;
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 .booking-header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  padding: 25px 30px;
+  padding: 40px 30px;
   border-bottom: 2px solid #f0f0f0;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  border-radius: 20px 20px 0 0;
+  text-align: center;
 }
 
 .booking-header h2 {
-  margin: 0;
-  font-size: 1.8rem;
+  margin: 0 0 15px 0;
+  font-size: 2.2rem;
   font-weight: 600;
 }
 
-.close-btn {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 2rem;
-  cursor: pointer;
-  padding: 0;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease;
-}
-
-.close-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+.booking-header p {
+  margin: 0;
+  font-size: 1.1rem;
+  opacity: 0.9;
 }
 
 .booking-content {
@@ -78,11 +43,9 @@
   min-height: 600px;
 }
 
-/* Left Side - Package Details */
 .package-details {
   background: linear-gradient(135deg, #f8f9ff 0%, #e8ecff 100%);
   padding: 30px;
-  border-radius: 0 0 0 20px;
 }
 
 .package-image {
@@ -184,7 +147,6 @@
   font-size: 1rem;
 }
 
-/* Right Side - Booking Form */
 .booking-form {
   padding: 30px;
   background: white;
@@ -321,27 +283,18 @@
   filter: brightness(0) invert(1);
 }
 
-/* Responsive Design */
 @media (max-width: 900px) {
   .booking-content {
     grid-template-columns: 1fr;
   }
-  
-  .package-details {
-    border-radius: 0;
-  }
-  
-  .booking-modal {
-    max-height: 95vh;
-  }
 }
 
 @media (max-width: 600px) {
-  .booking-overlay {
+  .booking-page {
     padding: 10px;
   }
   
-  .booking-modal {
+  .booking-container {
     border-radius: 15px;
   }
   

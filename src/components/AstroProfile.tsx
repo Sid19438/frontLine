@@ -11,8 +11,8 @@ const AstroProfile = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [isUsingDummyData, setIsUsingDummyData] = useState(false);
-  const [selectedPackage, setSelectedPackage] = useState<Plan | null>(null);
   const [isBookingFormOpen, setIsBookingFormOpen] = useState(false);
+  const [selectedPackage, setSelectedPackage] = useState<Plan | null>(null);
 
   useEffect(() => {
     if (name) {
@@ -109,10 +109,7 @@ const AstroProfile = () => {
   };
 
   const handleBooking = () => {
-    if (selectedPackage) {
-      // Open the booking form instead of showing alert
-      setIsBookingFormOpen(true);
-    }
+    setIsBookingFormOpen(true);
   };
 
   if (loading) {
@@ -142,6 +139,16 @@ const AstroProfile = () => {
           </div>
         </div>
       </div>
+    );
+  }
+
+  // Show booking form as full page
+  if (isBookingFormOpen) {
+    return (
+      <BookingForm
+        selectedPackage={selectedPackage}
+        astrologerName={astrologer?.name || ''}
+      />
     );
   }
 
@@ -230,16 +237,16 @@ const AstroProfile = () => {
                 <div className="plan-minutes" style={{
                   color: selectedPackage === plan ? '#ffd600' : '#764ba2',
                   textShadow: selectedPackage === plan ? '0 2px 10px rgba(255, 214, 0, 0.4)' : 'none'
-                }} >{plan.minutes} Minutes</div>
+                }}>{plan.minutes} Minutes</div>
                 <div className="plan-label" style={{
                   color: selectedPackage === plan ? '#ffd600' : (plan.label == 'Audio Call' ? 'gray' : 'green'),
                   textShadow: selectedPackage === plan ? '0 2px 8px rgba(255, 214, 0, 0.4)' : 'none'
-                }}  >{plan.label}</div>
+                }}>{plan.label}</div>
                 <div className="plan-rating" style={{color:'gray'}} >{'★'.repeat(plan.rating)}</div>
                 <div className="plan-price" style={{
                   color: selectedPackage === plan ? '#ffd600' : 'green',
                   textShadow: selectedPackage === plan ? '0 2px 8px rgba(255, 214, 0, 0.4)' : 'none'
-                }} >
+                }}>
                   ₹{plan.price}
                 </div>
               </div>
@@ -295,16 +302,8 @@ const AstroProfile = () => {
           </div>
         </div>
       )}
-
-      {/* Booking Form Modal */}
-      <BookingForm
-        isOpen={isBookingFormOpen}
-        onClose={() => setIsBookingFormOpen(false)}
-        selectedPackage={selectedPackage}
-        astrologerName={astrologer?.name || ''}
-      />
       
-      {astrologer?.specializations && astrologer.specializations.length > 0 && (
+      {astrologer.specializations && astrologer.specializations.length > 0 && (
         <div className="astro-specialization">
           <h3 style={{color:'gray'}} >Specialization</h3>
           <div className="specialization-list">
@@ -317,10 +316,10 @@ const AstroProfile = () => {
       
       <div className="astro-about">
         <h3 style={{color:'gray', }} >About My Services</h3>
-        <p style={{color:'gray', }} >{astrologer?.about}</p>
+        <p style={{color:'gray', }} >{astrologer.about}</p>
       </div>
       
-      {astrologer?.gallery && astrologer.gallery.length > 0 && (
+      {astrologer.gallery && astrologer.gallery.length > 0 && (
         <div className="astro-gallery">
           <h3>Gallery</h3>
           <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
