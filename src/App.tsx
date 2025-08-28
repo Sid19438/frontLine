@@ -11,6 +11,7 @@ import WhyAstrology from './components/WhyAstrology';
 import CategorySection from './components/CategorySection';
 import Dashboard from './components/Dashboard';
 import AllAstrologers from './components/AllAstrologers';
+import PaymentStatus from './components/PaymentStatus';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -66,6 +67,7 @@ function App() {
           <Route path="/astrologer/:name" element={<AstroProfile />} />
           <Route path="/all-astrologers" element={<AllAstrologers />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/payment-status" element={<PaymentStatus />} />
         </Routes>
       </div>
     </Router>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './BookingForm.css';
+import axios from 'axios';
 
 interface BookingFormProps {
   selectedPackage: any;
@@ -16,6 +17,9 @@ const BookingForm: React.FC<BookingFormProps> = ({ selectedPackage, astrologerNa
     placeOfBirth: '',
     termsAccepted: false
   });
+  
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [error, setError] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -27,12 +31,59 @@ const BookingForm: React.FC<BookingFormProps> = ({ selectedPackage, astrologerNa
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you can implement the actual booking logic
-    console.log('Booking form submitted:', formData);
-    // You can redirect to payment gateway or show success message
-    alert('Booking form submitted successfully! Redirecting to payment...');
+    
+    if (!formData.termsAccepted) {
+      setError('Please accept the terms and conditions');
+      return;
+    }
+
+    setIsProcessing(true);
+    setError('');
+
+    try {
+      // Prepare payment data
+      const paymentData = {
+        amount: selectedPackage?.price || 0,
+        customerName: formData.name,
+        customerEmail: formData.email,
+        customerPhone: formData.whatsapp,
+        astrologerName: astrologerName,
+        packageName: `${selectedPackage?.label || 'Consultation'} (${selectedPackage?.minutes || 30} Min)`
+      };
+
+      // Call backend to initiate payment
+      const response = await axios.post('http://localhost:5000/api/payment/initiate', paymentData);
+      
+      if (response.data.success) {
+        // Create a form to submit to Paytm
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = response.data.data.redirectUrl;
+        form.style.display = 'none';
+
+        // Add all Paytm parameters as hidden fields
+        Object.entries(response.data.data.paytmParams).forEach(([key, value]) => {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = key;
+          input.value = value as string;
+          form.appendChild(input);
+        });
+
+        // Submit the form to redirect to Paytm
+        document.body.appendChild(form);
+        form.submit();
+      } else {
+        setError('Failed to initiate payment. Please try again.');
+      }
+    } catch (error: any) {
+      console.error('Payment initiation error:', error);
+      setError(error.response?.data?.message || 'Something went wrong. Please try again.');
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   return (
@@ -187,9 +238,28 @@ const BookingForm: React.FC<BookingFormProps> = ({ selectedPackage, astrologerNa
                   <span className="amount">₹{selectedPackage?.price?.toLocaleString() || '1,48,000'}</span>
                 </div>
                 
-                <button type="submit" className="pay-button">
-                  <img src="https://razorpay.com/favicon.png" alt="Razorpay" className="razorpay-logo" />
-                  Pay with Razorpay
+                {error && (
+                  <div className="error-message">
+                    {error}
+                  </div>
+                )}
+                
+                <button 
+                  type="submit" 
+                  className="pay-button" 
+                  disabled={isProcessing}
+                >
+                  {isProcessing ? (
+                    <>
+                      <div className="spinner"></div>
+                      Processing...
+                    </>
+                  ) : (
+                    <>
+                      <img src="https://pwebassets.paytm.com/commonweb2/paytm_logo.png" alt="Paytm" className="paytm-logo" />
+                      Pay with Paytm
+                    </>
+                  )}
                 </button>
               </div>
             </form>
