@@ -11,7 +11,9 @@ import WhyAstrology from './components/WhyAstrology';
 import CategorySection from './components/CategorySection';
 import Dashboard from './components/Dashboard';
 import AllAstrologers from './components/AllAstrologers';
-import PaymentStatus from './components/PaymentStatus';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsConditions from './components/TermsConditions';
+import RefundPolicy from './components/RefundPolicy';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -67,7 +69,9 @@ function App() {
           <Route path="/astrologer/:name" element={<AstroProfile />} />
           <Route path="/all-astrologers" element={<AllAstrologers />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/payment-status" element={<PaymentStatus />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-conditions" element={<TermsConditions />} />
+          <Route path="/refund-policy" element={<RefundPolicy />} />
         </Routes>
       </div>
     </Router>

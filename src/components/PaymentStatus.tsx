@@ -1,38 +1,58 @@
 import React, { useEffect, useState } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useSearchParams, useNavigate, useLocation } from 'react-router-dom';
 import './PaymentStatus.css';
 
 interface PaymentResult {
   orderId: string;
-  transactionId: string;
+  paymentId?: string;
+  transactionId?: string;
   amount: string;
   status: string;
   message: string;
-  responseCode: string;
+  responseCode?: string;
   timestamp: string;
+  customerName?: string;
+  customerEmail?: string;
+  customerPhone?: string;
+  astrologerName?: string;
+  packageName?: string;
 }
 
 const PaymentStatus: React.FC = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const [paymentResult, setPaymentResult] = useState<PaymentResult | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Extract payment result from URL parameters
+    // Check if payment result is passed via location state (from Razorpay)
+    if (location.state?.paymentResult) {
+      setPaymentResult(location.state.paymentResult);
+      setLoading(false);
+      return;
+    }
+
+    // Extract payment result from URL parameters (fallback for direct access)
     const result: PaymentResult = {
       orderId: searchParams.get('orderId') || '',
-      transactionId: searchParams.get('transactionId') || '',
+      paymentId: searchParams.get('paymentId') || undefined,
+      transactionId: searchParams.get('transactionId') || searchParams.get('paymentId') || '',
       amount: searchParams.get('amount') || '',
       status: searchParams.get('status') || '',
       message: searchParams.get('message') || '',
-      responseCode: searchParams.get('responseCode') || '',
-      timestamp: searchParams.get('timestamp') || ''
+      responseCode: searchParams.get('responseCode') || undefined,
+      timestamp: searchParams.get('timestamp') || new Date().toISOString(),
+      customerName: searchParams.get('customerName') || undefined,
+      customerEmail: searchParams.get('customerEmail') || undefined,
+      customerPhone: searchParams.get('customerPhone') || undefined,
+      astrologerName: searchParams.get('astrologerName') || undefined,
+      packageName: searchParams.get('packageName') || undefined,
     };
 
     setPaymentResult(result);
     setLoading(false);
-  }, [searchParams]);
+  }, [searchParams, location.state]);
 
   const handleBackToHome = () => {
     navigate('/');
@@ -83,10 +103,10 @@ const PaymentStatus: React.FC = () => {
             <span className="value">{paymentResult.orderId}</span>
           </div>
           
-          {paymentResult.transactionId && (
+          {(paymentResult.paymentId || paymentResult.transactionId) && (
             <div className="detail-row">
-              <span className="label">Transaction ID:</span>
-              <span className="value">{paymentResult.transactionId}</span>
+              <span className="label">Payment ID:</span>
+              <span className="value">{paymentResult.paymentId || paymentResult.transactionId}</span>
             </div>
           )}
           
@@ -101,6 +121,27 @@ const PaymentStatus: React.FC = () => {
               {paymentResult.status}
             </span>
           </div>
+          
+          {paymentResult.customerName && (
+            <div className="detail-row">
+              <span className="label">Customer:</span>
+              <span className="value">{paymentResult.customerName}</span>
+            </div>
+          )}
+          
+          {paymentResult.astrologerName && (
+            <div className="detail-row">
+              <span className="label">Astrologer:</span>
+              <span className="value">{paymentResult.astrologerName}</span>
+            </div>
+          )}
+          
+          {paymentResult.packageName && (
+            <div className="detail-row">
+              <span className="label">Package:</span>
+              <span className="value">{paymentResult.packageName}</span>
+            </div>
+          )}
           
           <div className="detail-row">
             <span className="label">Date:</span>

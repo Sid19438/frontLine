@@ -35,7 +35,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ selectedPackage, astrologerNa
     e.preventDefault();
     
     if (!formData.termsAccepted) {
-      setError('Please accept the terms and conditions');
+      alert('Please accept the terms and conditions');
       return;
     }
 
@@ -57,24 +57,19 @@ const BookingForm: React.FC<BookingFormProps> = ({ selectedPackage, astrologerNa
       const response = await axios.post('http://localhost:5000/api/payment/initiate', paymentData);
       
       if (response.data.success) {
-        // Create a form to submit to Paytm
-        const form = document.createElement('form');
-        form.method = 'POST';
-        form.action = response.data.data.redirectUrl;
-        form.style.display = 'none';
-
-        // Add all Paytm parameters as hidden fields
-        Object.entries(response.data.data.paytmParams).forEach(([key, value]) => {
-          const input = document.createElement('input');
-          input.type = 'hidden';
-          input.name = key;
-          input.value = value as string;
-          form.appendChild(input);
-        });
-
-        // Submit the form to redirect to Paytm
-        document.body.appendChild(form);
-        form.submit();
+        // Load Razorpay script if not already loaded
+        if (!(window as any).Razorpay) {
+          const script = document.createElement('script');
+          script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+          script.async = true;
+          document.body.appendChild(script);
+          
+          script.onload = () => {
+            openRazorpayPayment(response.data.data);
+          };
+        } else {
+          openRazorpayPayment(response.data.data);
+        }
       } else {
         setError('Failed to initiate payment. Please try again.');
       }
@@ -84,6 +79,66 @@ const BookingForm: React.FC<BookingFormProps> = ({ selectedPackage, astrologerNa
     } finally {
       setIsProcessing(false);
     }
+  };
+
+  const openRazorpayPayment = (paymentData: any) => {
+    // Configure Razorpay options
+    const options = {
+      key: paymentData.key,
+      amount: paymentData.amount,
+      currency: paymentData.currency,
+      name: 'Astrology Consultation',
+      description: `${paymentData.packageName} with ${paymentData.astrologerName}`,
+      image: '/logo192.png',
+      order_id: paymentData.orderId,
+      handler: async (response: any) => {
+        try {
+          // Verify payment with your backend
+          const verifyResponse = await axios.post('http://localhost:5000/api/payment/verify', {
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature,
+            customerName: formData.name,
+            customerEmail: formData.email,
+            customerPhone: formData.whatsapp,
+            astrologerName: astrologerName,
+            packageName: paymentData.packageName,
+          });
+
+          if (verifyResponse.data.success) {
+            // Redirect to success page
+            window.location.href = `/payment-status?orderId=${response.razorpay_order_id}&paymentId=${response.razorpay_payment_id}&status=SUCCESS&message=Payment successful&amount=${paymentData.amount}&customerName=${formData.name}&astrologerName=${astrologerName}&packageName=${paymentData.packageName}&timestamp=${new Date().toISOString()}`;
+          } else {
+            throw new Error(verifyResponse.data.message || 'Payment verification failed');
+          }
+        } catch (error) {
+          console.error('Payment verification error:', error);
+          setError('Payment verification failed. Please contact support.');
+        }
+      },
+      prefill: {
+        name: formData.name,
+        email: formData.email,
+        contact: formData.whatsapp,
+      },
+      notes: {
+        address: 'Astrology Consultation Service',
+        astrologer: astrologerName,
+        package: paymentData.packageName,
+      },
+      theme: {
+        color: '#764ba2',
+      },
+      modal: {
+        ondismiss: () => {
+          setIsProcessing(false);
+        },
+      },
+    };
+
+    // Initialize Razorpay
+    const razorpay = new (window as any).Razorpay(options);
+    razorpay.open();
   };
 
   return (
@@ -238,28 +293,9 @@ const BookingForm: React.FC<BookingFormProps> = ({ selectedPackage, astrologerNa
                   <span className="amount">₹{selectedPackage?.price?.toLocaleString() || '1,48,000'}</span>
                 </div>
                 
-                {error && (
-                  <div className="error-message">
-                    {error}
-                  </div>
-                )}
-                
-                <button 
-                  type="submit" 
-                  className="pay-button" 
-                  disabled={isProcessing}
-                >
-                  {isProcessing ? (
-                    <>
-                      <div className="spinner"></div>
-                      Processing...
-                    </>
-                  ) : (
-                    <>
-                      <img src="https://pwebassets.paytm.com/commonweb2/paytm_logo.png" alt="Paytm" className="paytm-logo" />
-                      Pay with Paytm
-                    </>
-                  )}
+                <button type="submit" className="pay-button">
+                  <img src="https://razorpay.com/favicon.png" alt="Razorpay" className="razorpay-logo" />
+                  Pay with Razorpay
                 </button>
               </div>
             </form>

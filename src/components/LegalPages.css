@@ -1,0 +1,146 @@
+.legal-page {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.legal-content {
+  padding: 120px 20px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.legal-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  line-height: 1.6;
+}
+
+.legal-container h1 {
+  color: #2c3e50;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+  border-bottom: 3px solid #e74c3c;
+  padding-bottom: 20px;
+}
+
+.last-updated {
+  text-align: center;
+  color: #7f8c8d;
+  font-style: italic;
+  margin-bottom: 40px;
+  font-size: 0.9rem;
+}
+
+.legal-container section {
+  margin-bottom: 35px;
+}
+
+.legal-container h2 {
+  color: #34495e;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #ecf0f1;
+}
+
+.legal-container h3 {
+  color: #2c3e50;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 20px 0 12px 0;
+}
+
+.legal-container p {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+.legal-container ul, .legal-container ol {
+  margin: 15px 0;
+  padding-left: 25px;
+}
+
+.legal-container li {
+  margin-bottom: 8px;
+  color: #2c3e50;
+}
+
+.legal-container ul li {
+  list-style-type: disc;
+}
+
+.legal-container ol li {
+  list-style-type: decimal;
+}
+
+.contact-info {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid #e74c3c;
+  margin-top: 15px;
+}
+
+.contact-info p {
+  margin-bottom: 8px;
+  color: #2c3e50;
+}
+
+.contact-info strong {
+  color: #e74c3c;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .legal-content {
+    padding: 100px 15px 40px;
+  }
+  
+  .legal-container {
+    padding: 25px 20px;
+  }
+  
+  .legal-container h1 {
+    font-size: 2rem;
+  }
+  
+  .legal-container h2 {
+    font-size: 1.3rem;
+  }
+  
+  .legal-container h3 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .legal-content {
+    padding: 90px 10px 30px;
+  }
+  
+  .legal-container {
+    padding: 20px 15px;
+  }
+  
+  .legal-container h1 {
+    font-size: 1.8rem;
+  }
+  
+  .legal-container h2 {
+    font-size: 1.2rem;
+  }
+  
+  .legal-container h3 {
+    font-size: 1rem;
+  }
+  
+  .legal-container ul, .legal-container ol {
+    padding-left: 20px;
+  }
+}
