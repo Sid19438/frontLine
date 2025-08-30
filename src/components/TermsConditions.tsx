@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './LegalPages.css';
 import Header from './Header';
 import Footer from './Footer';
 
 const TermsConditions = () => {
+  const [showTOC, setShowTOC] = useState(false);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setShowTOC(false);
+    }
+  };
+
   return (
     <div className="legal-page">
       <Header />
@@ -12,14 +22,44 @@ const TermsConditions = () => {
           <h1>Terms and Conditions</h1>
           <p className="last-updated">Last updated: {new Date().toLocaleDateString()}</p>
           
-          <section>
+          {/* Mobile-friendly Table of Contents */}
+          <div className="mobile-toc">
+            <button 
+              className="toc-toggle"
+              onClick={() => setShowTOC(!showTOC)}
+              aria-label="Toggle table of contents"
+            >
+              📋 Table of Contents
+            </button>
+            {showTOC && (
+              <div className="toc-content">
+                <ul>
+                  <li><button onClick={() => scrollToSection('acceptance')}>1. Acceptance of Terms</button></li>
+                  <li><button onClick={() => scrollToSection('description')}>2. Description of Service</button></li>
+                  <li><button onClick={() => scrollToSection('responsibilities')}>3. User Responsibilities</button></li>
+                  <li><button onClick={() => scrollToSection('payment')}>4. Payment Terms</button></li>
+                  <li><button onClick={() => scrollToSection('delivery')}>5. Service Delivery</button></li>
+                  <li><button onClick={() => scrollToSection('intellectual')}>6. Intellectual Property</button></li>
+                  <li><button onClick={() => scrollToSection('disclaimers')}>7. Disclaimers</button></li>
+                  <li><button onClick={() => scrollToSection('liability')}>8. Limitation of Liability</button></li>
+                  <li><button onClick={() => scrollToSection('privacy')}>9. Privacy and Data Protection</button></li>
+                  <li><button onClick={() => scrollToSection('termination')}>10. Termination</button></li>
+                  <li><button onClick={() => scrollToSection('governing')}>11. Governing Law</button></li>
+                  <li><button onClick={() => scrollToSection('changes')}>12. Changes to Terms</button></li>
+                  <li><button onClick={() => scrollToSection('contact')}>13. Contact Information</button></li>
+                </ul>
+              </div>
+            )}
+          </div>
+          
+          <section id="acceptance">
             <h2>1. Acceptance of Terms</h2>
             <p>
               By accessing and using the Innovana Astro Services Ltd website and services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
             </p>
           </section>
 
-          <section>
+          <section id="description">
             <h2>2. Description of Service</h2>
             <p>
               Innovana Astro Services Ltd provides astrology consultation services, including but not limited to:
@@ -35,7 +75,7 @@ const TermsConditions = () => {
             </ul>
           </section>
 
-          <section>
+          <section id="responsibilities">
             <h2>3. User Responsibilities</h2>
             <h3>3.1 Accurate Information</h3>
             <p>
@@ -60,7 +100,7 @@ const TermsConditions = () => {
             </ul>
           </section>
 
-          <section>
+          <section id="payment">
             <h2>4. Payment Terms</h2>
             <h3>4.1 Payment Processing</h3>
             <p>
@@ -81,7 +121,7 @@ const TermsConditions = () => {
             </p>
           </section>
 
-          <section>
+          <section id="delivery">
             <h2>5. Service Delivery</h2>
             <h3>5.1 Consultation Services</h3>
             <p>
@@ -102,7 +142,7 @@ const TermsConditions = () => {
             </p>
           </section>
 
-          <section>
+          <section id="intellectual">
             <h2>6. Intellectual Property</h2>
             <p>
               All content on our website, including text, graphics, logos, images, and software, 
@@ -111,7 +151,7 @@ const TermsConditions = () => {
             </p>
           </section>
 
-          <section>
+          <section id="disclaimers">
             <h2>7. Disclaimers</h2>
             <h3>7.1 Astrological Services</h3>
             <p>
@@ -127,7 +167,7 @@ const TermsConditions = () => {
             </p>
           </section>
 
-          <section>
+          <section id="liability">
             <h2>8. Limitation of Liability</h2>
             <p>
               Innovana Astro Services Ltd shall not be liable for any indirect, incidental, special, 
@@ -136,7 +176,7 @@ const TermsConditions = () => {
             </p>
           </section>
 
-          <section>
+          <section id="privacy">
             <h2>9. Privacy and Data Protection</h2>
             <p>
               Your privacy is important to us. Please review our Privacy Policy to understand how we 
@@ -144,7 +184,7 @@ const TermsConditions = () => {
             </p>
           </section>
 
-          <section>
+          <section id="termination">
             <h2>10. Termination</h2>
             <p>
               We may terminate or suspend your access to our services at any time, without prior notice, 
@@ -153,7 +193,7 @@ const TermsConditions = () => {
             </p>
           </section>
 
-          <section>
+          <section id="governing">
             <h2>11. Governing Law</h2>
             <p>
               These Terms and Conditions shall be governed by and construed in accordance with the laws 
@@ -161,7 +201,7 @@ const TermsConditions = () => {
             </p>
           </section>
 
-          <section>
+          <section id="changes">
             <h2>12. Changes to Terms</h2>
             <p>
               We reserve the right to modify these Terms and Conditions at any time. Changes will be 
@@ -170,7 +210,7 @@ const TermsConditions = () => {
             </p>
           </section>
 
-          <section>
+          <section id="contact">
             <h2>13. Contact Information</h2>
             <p>
               If you have questions about these Terms and Conditions, please contact us at:

@@ -458,8 +458,27 @@
     padding: 20px;
   }
   
+  /* Make astro cards horizontally scrollable on mobile */
   .products-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 10px 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+  
+  .products-grid::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  
+  .product-card {
+    min-width: 280px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    margin-bottom: 10px;
   }
   
   .form-actions {
@@ -468,6 +487,27 @@
   
   .product-actions {
     flex-direction: column;
+  }
+  
+  /* Improve astro card layout on mobile */
+  .astro-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  
+  .astro-avatar-small {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .astro-details {
+    text-align: center;
+  }
+  
+  .astro-stats {
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }
 
@@ -479,5 +519,62 @@
   .form-container,
   .products-section {
     padding: 15px;
+  }
+  
+  /* Further optimize for small mobile screens */
+  .products-grid {
+    gap: 12px;
+    padding: 8px 0;
+  }
+  
+  .product-card {
+    min-width: 260px;
+    padding: 15px;
+  }
+  
+  .astro-avatar-small {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .product-info h3 {
+    font-size: 1.2rem;
+  }
+  
+  .product-description {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .dashboard-container {
+    padding: 10px;
+  }
+  
+  .form-container,
+  .products-section {
+    padding: 12px;
+  }
+  
+  .products-grid {
+    gap: 10px;
+  }
+  
+  .product-card {
+    min-width: 240px;
+    padding: 12px;
+  }
+  
+  .astro-avatar-small {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .product-info h3 {
+    font-size: 1.1rem;
+  }
+  
+  .product-description {
+    font-size: 0.85rem;
   }
 }
