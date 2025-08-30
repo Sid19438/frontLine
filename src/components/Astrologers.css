@@ -484,13 +484,14 @@
     display: flex;
     overflow-x: auto;
     gap: 0.85rem;
-    padding: 10px 0px;
+    padding: 10px 10px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
     flex-wrap: nowrap;
-   
+    margin-left: 10px;
+    
   }
 
   .astrologer-card {

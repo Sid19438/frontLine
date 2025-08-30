@@ -494,6 +494,185 @@ body, html, #root, .App {
   }
 }
 
+@media (max-width: 900px) {
+  .review-section {
+    padding: 3rem 0 2rem 0;
+  }
+  
+  .review-title {
+    font-size: 1.6rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  .review-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+  
+  .review-carousel {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .review-cards-container {
+    gap: 1.5rem;
+    flex-direction: column;
+  }
+  
+  .review-card {
+    min-width: 280px;
+    max-width: 95%;
+    width: 100%;
+    padding: 2rem 1.5rem 1.8rem 1.5rem;
+    margin: 0.5rem 0;
+  }
+  
+  .review-avatar {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 1.2rem;
+  }
+  
+  .review-stars {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .review-name {
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .review-title-small {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+  
+  .review-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+  
+  .carousel-arrow {
+    display: none; /* Hide arrows on mobile */
+  }
+}
+
+@media (max-width: 600px) {
+  .review-section {
+    padding: 2.5rem 0 1.5rem 0;
+  }
+  
+  .review-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .review-subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .review-cards-container {
+    gap: 1rem;
+  }
+  
+  .review-card {
+    min-width: 260px;
+    padding: 1.5rem 1.2rem 1.3rem 1.2rem;
+    margin: 0.4rem 0;
+    border-radius: 20px;
+  }
+  
+  .review-avatar {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1rem;
+  }
+  
+  .review-stars {
+    font-size: 0.95rem;
+    margin-bottom: 0.7rem;
+  }
+  
+  .review-name {
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .review-title-small {
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .review-text {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  
+  .carousel-arrow {
+    display: none; /* Hide arrows on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .review-section {
+    padding: 2rem 0 1rem 0;
+  }
+  
+  .review-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  .review-subtitle {
+    font-size: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .review-cards-container {
+    gap: 0.8rem;
+  }
+  
+  .review-card {
+    min-width: 240px;
+    padding: 1.2rem 1rem 1rem 1rem;
+    margin: 0.3rem 0;
+    border-radius: 18px;
+  }
+  
+  .review-avatar {
+    width: 55px;
+    height: 55px;
+    margin-bottom: 0.8rem;
+  }
+  
+  .review-stars {
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  .review-name {
+    font-size: 0.85rem;
+    margin-bottom: 0.2rem;
+  }
+  
+  .review-title-small {
+    font-size: 0.75rem;
+    margin-bottom: 0.7rem;
+  }
+  
+  .review-text {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+  
+  .carousel-arrow {
+    display: none; /* Hide arrows on mobile */
+  }
+}
+
 /* Why Astrology Section Styles */
 .why-astrology-section {
   background: #fff6fa;
