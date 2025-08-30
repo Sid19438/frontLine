@@ -55,7 +55,15 @@
 .logo-icon {
   font-size: 2.5rem;
   margin-right: 0.8rem;
+  animation: float 3s ease-in-out infinite;
   filter: drop-shadow(0 4px 8px rgba(255, 214, 0, 0.4));
+}
+
+@media (max-width: 480px) {
+  .logo-icon {
+    font-size: 1.5rem;
+  margin-right: 0.2rem;
+  }
 }
 
 .logo-text {
@@ -64,6 +72,12 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-weight: 700;
+}
+
+@media (max-width: 480px) {
+  .logo-text {
+    font-size: 18px; /* small mobile screens ke liye */
+  }
 }
 
 .nav-section {
@@ -136,6 +150,14 @@
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
+@media (max-width: 480px) {
+  .dashboard-link {
+    font-size: 0.75rem; /* small mobile screens ke liye */
+    margin: 0rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
 .dashboard-link:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
@@ -185,6 +207,7 @@
   filter: drop-shadow(0 4px 12px rgba(255, 214, 0, 0.4));
 }
 
+/* Mobile responsiveness temporarily disabled
 @media (max-width: 700px) {
   .header-content {
     flex-direction: column;
@@ -212,4 +235,5 @@
     margin-right: 0.5rem;
     padding: 0.4rem 0.8rem;
   }
-} 
+}
+*/ 

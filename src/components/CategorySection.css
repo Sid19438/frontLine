@@ -129,8 +129,6 @@
   letter-spacing: 0.2px;
 }
 
-
-
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -143,15 +141,138 @@
 }
 
 @media (max-width: 900px) {
+  .category-section {
+    padding: 2rem 1.5rem;
+    margin: 0 auto 1.5rem auto;
+  }
+  
+  .category-title {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+  
   .category-list {
     gap: 1.2rem;
+    padding: 10px 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
   }
+  
   .category-card {
     min-width: 90px;
     max-width: 120px;
     padding: 1.1rem 0.7rem 0.7rem 0.7rem;
+    scroll-snap-align: start;
+    flex-shrink: 0;
   }
+  
+  .category-icon {
+    font-size: 2.8rem;
+    width: 56px;
+    height: 56px;
+  }
+  
+  .category-name {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .category-section {
+    padding: 1.5rem 1rem;
+    margin: 0 auto 1rem auto;
+  }
+  
   .category-title {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .category-list {
+    gap: 1rem;
+    padding: 8px 0;
+  }
+  
+  .category-card {
+    min-width: 90px;
+    max-width: 100px;
+    padding: 1rem 0.6rem 0.6rem 0.6rem;
+  }
+  
+  .category-icon {
+    font-size: 2.5rem;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .category-name {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-section {
+    padding: 1rem 0.75rem;
+  }
+  
+  .category-title {
+    font-size: 1.4rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .category-list {
+    gap: 0.8rem;
+    padding: 6px 0;
+  }
+  
+  .category-card {
+    min-width: 80px;
+    max-width: 90px;
+    padding: 0.8rem 0.5rem 0.5rem 0.5rem;
+  }
+  
+  .category-icon {
+    font-size: 2.2rem;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 0.4rem;
+  }
+  
+  .category-name {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .category-section {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .category-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .category-list {
+    gap: 0.6rem;
+    padding: 4px 0;
+  }
+  
+  .category-card {
+    min-width: 70px;
+    max-width: 80px;
+    padding: 0.6rem 0.4rem 0.4rem 0.4rem;
+  }
+  
+  .category-icon {
+    font-size: 2rem;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0.3rem;
+  }
+  
+  .category-name {
+    font-size: 0.75rem;
   }
 } 
