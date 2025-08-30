@@ -7,6 +7,7 @@
   position: relative;
   overflow: hidden;
   animation: fadeInUp 1s ease-out 0.8s both;
+  
 }
 
 .astrologers-section::before {
@@ -66,6 +67,7 @@
   margin: 0 auto;
   position: relative;
   z-index: 1;
+ 
 }
 
 .astrologer-card {
@@ -475,11 +477,46 @@
 
 @media (max-width: 480px) {
   .astrologers-section {
-    padding: 1.5rem 0.75rem;
+    padding: 0.5rem 0rem;
   }
+
+  .astrologers-list {
+    display: flex;
+    overflow-x: auto;
+    gap: 0.85rem;
+    padding: 10px 0px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    flex-wrap: nowrap;
+   
+  }
+
+  .astrologer-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    box-shadow: 
+      0 15px 35px rgba(0, 0, 0, 0.2),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
+    padding: 1.25rem 1.3rem;
+    min-width: 200px;
+    max-width: 250px;
+    flex: 1 1 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.8s ease-out both;
+  }
+
   
   .astrologers-section h2 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
   
   .astrologers-section p {
@@ -541,7 +578,7 @@
 
 @media (max-width: 360px) {
   .astrologers-section {
-    padding: 1rem 0.5rem;
+    padding: 0rem 0.5rem;
   }
   
   .astrologers-section h2 {

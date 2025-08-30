@@ -25,7 +25,7 @@ const CategorySection = () => {
 
   return (
     <section className="category-section">
-      <h2 className="category-title">We Solve All Kinds of Life Issues</h2>
+      <h2 className="category-title">Life Issues We Solve</h2>
       {showHint && <div className="category-scroll-hint">Scroll to see more categories &rarr;</div>}
       <div className="category-list scrollable" ref={listRef}>
         {categories.map((cat, idx) => (

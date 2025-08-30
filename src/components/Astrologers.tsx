@@ -69,10 +69,10 @@ const Astrologers = () => {
   return (
     <section className="astrologers-section">
       <h2>Our Astrologers</h2>
-      <p style={{color: '#7a7a7a'}} >Get in touch with the best Online Astrologers, anytime & anywhere!</p>
+      <p style={{color: '#7a7a7a', padding: '0rem 0.5rem'}} >Get in touch with the best Online Astrologers, anytime & anywhere!</p>
       
       {/* Show status indicator */}
-      {isUsingDummyData && (
+      {/* {isUsingDummyData && (
         <div style={{
           background: '#fff3cd',
           color: '#856404',
@@ -84,7 +84,7 @@ const Astrologers = () => {
         }}>
           📱 Demo Mode: Showing sample astrologer profiles
         </div>
-      )}
+      )} */}
       
       {loading && (
         <div style={{
