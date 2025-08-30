@@ -175,11 +175,11 @@ const TermsConditions = () => {
             <p>
               If you have questions about these Terms and Conditions, please contact us at:
             </p>
-            <div className="contact-info">
+            {/* <div className="contact-info">
               <p><strong>Email:</strong> legal@innovanaastro.com</p>
               <p><strong>Phone:</strong> +91-XXXXXXXXXX</p>
               <p><strong>Address:</strong> Innovana Astro Services Ltd, [Your Address]</p>
-            </div>
+            </div> */}
           </section>
         </div>
       </div>
