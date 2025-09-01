@@ -285,11 +285,11 @@ body, html, #root, .App {
 }
 
 @media (max-width: 480px) {
-  .services-title {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    margin-top: 4rem;
-  }
+  
+
+  
+
+
 }
 
 /* Review Section Styles */
@@ -616,62 +616,7 @@ body, html, #root, .App {
   }
 }
 
-@media (max-width: 480px) {
-  .review-section {
-    padding: 2rem 0 1rem 0;
-  }
-  
-  .review-title {
-    font-size: 1.3rem;
-    margin-bottom: 0.4rem;
-  }
-  
-  .review-subtitle {
-    font-size: 0.8rem;
-    margin-bottom: 1.2rem;
-  }
-  
-  .review-cards-container {
-    gap: 0.8rem;
-  }
-  
-  .review-card {
-    min-width: 240px;
-    padding: 1.2rem 1rem 1rem 1rem;
-    margin: 0.3rem 0;
-    border-radius: 18px;
-  }
-  
-  .review-avatar {
-    width: 55px;
-    height: 55px;
-    margin-bottom: 0.8rem;
-  }
-  
-  .review-stars {
-    font-size: 0.9rem;
-    margin-bottom: 0.6rem;
-  }
-  
-  .review-name {
-    font-size: 0.85rem;
-    margin-bottom: 0.2rem;
-  }
-  
-  .review-title-small {
-    font-size: 0.75rem;
-    margin-bottom: 0.7rem;
-  }
-  
-  .review-text {
-    font-size: 0.8rem;
-    line-height: 1.4;
-  }
-  
-  .carousel-arrow {
-    display: none; /* Hide arrows on mobile */
-  }
-}
+
 
 /* Why Astrology Section Styles */
 .why-astrology-section {
@@ -768,4 +713,149 @@ body, html, #root, .App {
     font-size: 1rem;
     padding: 0 0.5rem;
   }
+}
+
+@media (max-width: 480px) {
+  .review-section {
+    padding: 2rem 0 1rem 0;
+  }
+  
+  .review-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  .review-subtitle {
+    font-size: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .review-cards-container {
+    gap: 0.8rem;
+  }
+  
+  .review-card {
+    min-width: 240px;
+    padding: 1.2rem 1rem 1rem 1rem;
+    margin: 0.3rem 0;
+    border-radius: 18px;
+  }
+  
+  .review-avatar {
+    width: 55px;
+    height: 55px;
+    margin-bottom: 0.8rem;
+  }
+  
+  .review-stars {
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  .review-name {
+    font-size: 0.85rem;
+    margin-bottom: 0.2rem;
+  }
+  
+  .review-title-small {
+    font-size: 0.75rem;
+    margin-bottom: 0.7rem;
+  }
+  
+  .review-text {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+  
+  .carousel-arrow {
+    display: none; /* Hide arrows on mobile */
+  }
+
+
+  .why-astrology-section {
+    background: #fff6fa;
+    padding: 3rem 0 2.5rem 0;
+    margin: 0 auto;
+    text-align: center;
+    border-top: 1px solid #fbe3ee;
+  }
+  
+  .why-astrology-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .why-astrology-title {
+    font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: #222;
+    letter-spacing: 0.5px;
+  }
+  
+  .dropdown-arrow {
+    background: none;
+    border: 2px solid #e48ab8;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border 0.2s, background 0.2s, transform 0.3s;
+    outline: none;
+    margin-left: 0.25rem;
+    padding: 0;
+  }
+  
+  .dropdown-arrow svg {
+    display: block;
+    transition: transform 0.3s;
+  }
+  
+  .dropdown-arrow.open svg {
+    transform: rotate(180deg);
+  }
+  
+  .why-astrology-underline {
+    width: 280px;
+    height: 3px;
+    background: #e48ab8;
+    margin: 0.5rem auto 2.2rem auto;
+    border-radius: 2px;
+  }
+  
+  .why-astrology-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+    background: none;
+    color: #3a2d3c;
+    font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    padding: 0 1.5rem;
+    animation: fadeInUp 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .why-astrology-content h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.1rem;
+    color: #222;
+    /* letter-spacing: 0.1px; */
+  }
+  
+  .medium-font {
+    font-size: 0.9rem;
+  }
+
+
+
+
 }
