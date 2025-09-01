@@ -55,36 +55,36 @@ const Footer = () => (
         <div className="footer-col">
           <h4>Get Advice On</h4>
           <ul>
-            {footerLinks[0].links.map(link => <li key={link}><a href="#">{link}</a></li>)}
+            {footerLinks[0].links.map(link => <li key={link}><a href="/">{link}</a></li>)}
           </ul>
         </div>
         <div className="footer-col">
           <h4>Muhurat</h4>
           <ul>
-            {footerLinks[1].links.map(link => <li key={link}><a href="#">{link}</a></li>)}
+            {footerLinks[1].links.map(link => <li key={link}><a href="/">{link}</a></li>)}
           </ul>
           <h4>Tarot</h4>
         </div>
         <div className="footer-col">
           <h4>Panchang</h4>
           <ul>
-            {footerLinks[5].links.map(link => <li key={link}><a href="#">{link}</a></li>)}
+            {footerLinks[5].links.map(link => <li key={link}><a href="/">{link}</a></li>)}
           </ul>
           <h4>Astrology</h4>
           <ul>
-            {footerLinks[6].links.map(link => <li key={link}><a href="#">{link}</a></li>)}
+            {footerLinks[6].links.map(link => <li key={link}><a href="/">{link}</a></li>)}
           </ul>
         </div>
         <div className="footer-col">
           <h4>Vrat and Upvaas</h4>
           <ul>
-            {footerLinks[2].links.map(link => <li key={link}><a href="#">{link}</a></li>)}
+            {footerLinks[2].links.map(link => <li key={link}><a href="/">{link}</a></li>)}
           </ul>
         </div>
         <div className="footer-col">
           <h4>Horoscope</h4>
           <ul>
-            {footerLinks[3].links.map(link => <li key={link}><a href="#">{link}</a></li>)}
+            {footerLinks[3].links.map(link => <li key={link}><a href="/">{link}</a></li>)}
           </ul>
         </div>
         <div className="footer-col">
@@ -100,14 +100,14 @@ const Footer = () => (
         <h4>Download Our Apps</h4>
         <div className="footer-app-badges">
           {appBadges.map(badge => (
-            <a href={badge.href} key={badge.alt} target="_blank" rel="noopener noreferrer">
+            <a href={badge.href || '/'} key={badge.alt} target="_blank" rel="noopener noreferrer">
               <img src={badge.src} alt={badge.alt} className="footer-app-badge" />
             </a>
           ))}
         </div>
         <div className="footer-social-icons">
           {socialLinks.map((s, i) => (
-            <a href={s.href} key={i} target="_blank" rel="noopener noreferrer" className="footer-social-icon">
+            <a href={s.href || '/'} key={i} target="_blank" rel="noopener noreferrer" className="footer-social-icon">
               {s.icon}
             </a>
           ))}

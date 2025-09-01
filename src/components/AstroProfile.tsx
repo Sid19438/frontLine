@@ -18,6 +18,8 @@ const AstroProfile = () => {
     if (name) {
       fetchAstrologerByName(decodeURIComponent(name));
     }
+    // fetchAstrologerByName is stable in this component; disabling exhaustive-deps to avoid false positive
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [name]);
 
   const fetchAstrologerByName = async (astrologerName: string) => {
@@ -239,7 +241,7 @@ const AstroProfile = () => {
                   textShadow: selectedPackage === plan ? '0 2px 10px rgba(255, 214, 0, 0.4)' : 'none'
                 }}>{plan.minutes} Minutes</div>
                 <div className="plan-label" style={{
-                  color: selectedPackage === plan ? '#ffd600' : (plan.label == 'Audio Call' ? 'gray' : 'green'),
+                  color: selectedPackage === plan ? '#ffd600' : (plan.label === 'Audio Call' ? 'gray' : 'green'),
                   textShadow: selectedPackage === plan ? '0 2px 8px rgba(255, 214, 0, 0.4)' : 'none'
                 }}>{plan.label}</div>
                 <div className="plan-rating" style={{color:'gray'}} >{'★'.repeat(plan.rating)}</div>

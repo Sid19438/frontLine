@@ -11,28 +11,28 @@ interface BannerItem {
   imageUrl: string;
 }
 
+// Move fallback banners outside the component to avoid effect deps warnings
+const FALLBACK_BANNERS: BannerItem[] = [
+  {
+    _id: 'fallback-1',
+    title: 'Discover Your Destiny',
+    imageUrl: firstBanner
+  },
+  {
+    _id: 'fallback-2',
+    title: 'Expert Astrology Guidance',
+    imageUrl: secondBanner
+  },
+  {
+    _id: 'fallback-3',
+    title: 'Transform Your Life',
+    imageUrl: thirdBanner
+  }
+];
+
 const Banner: React.FC = () => {
   const [items, setItems] = useState<BannerItem[]>([]);
   const [index, setIndex] = useState(0);
-
-  // Fallback banner data with local images
-  const fallbackBanners: BannerItem[] = [
-    {
-      _id: 'fallback-1',
-      title: 'Discover Your Destiny',
-      imageUrl: firstBanner
-    },
-    {
-      _id: 'fallback-2',
-      title: 'Expert Astrology Guidance',
-      imageUrl: secondBanner
-    },
-    {
-      _id: 'fallback-3',
-      title: 'Transform Your Life',
-      imageUrl: thirdBanner
-    }
-  ];
 
   useEffect(() => {
     const load = async () => {
@@ -43,12 +43,12 @@ const Banner: React.FC = () => {
           setItems(data);
         } else {
           // Use fallback banners if API response is empty or invalid
-          setItems(fallbackBanners);
+          setItems(FALLBACK_BANNERS);
         }
       } catch (error) {
         // Use fallback banners if API call fails (database issue, network error, etc.)
         console.log('Using fallback banners due to API/database error:', error);
-        setItems(fallbackBanners);
+        setItems(FALLBACK_BANNERS);
       }
     };
     load();

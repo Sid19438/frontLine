@@ -18,6 +18,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ selectedPackage, astrologerNa
     termsAccepted: false
   });
   
+  // Local state for payment flow
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState('');
 
@@ -284,7 +285,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ selectedPackage, astrologerNa
                       onChange={handleInputChange}
                       required
                     />
-                    I agree to the <a href="#" className="terms-link">Terms and Conditions</a>
+                    I agree to the <a href="/terms-conditions" className="terms-link">Terms and Conditions</a>
                   </label>
                 </div>
                 
