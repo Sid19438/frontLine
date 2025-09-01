@@ -18,7 +18,6 @@ const BookingForm: React.FC<BookingFormProps> = ({ selectedPackage, astrologerNa
     termsAccepted: false
   });
   
-  // Local state for payment flow
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState('');
 
@@ -276,6 +275,20 @@ const BookingForm: React.FC<BookingFormProps> = ({ selectedPackage, astrologerNa
 
               {/* Terms and Payment */}
               <div className="form-section">
+                {/* Error Display */}
+                {error && (
+                  <div className="error-message" style={{
+                    background: '#ffebee',
+                    color: '#c62828',
+                    padding: '10px',
+                    borderRadius: '5px',
+                    marginBottom: '15px',
+                    fontSize: '14px'
+                  }}>
+                    {error}
+                  </div>
+                )}
+                
                 <div className="terms-checkbox">
                   <label>
                     <input
@@ -294,9 +307,13 @@ const BookingForm: React.FC<BookingFormProps> = ({ selectedPackage, astrologerNa
                   <span className="amount">₹{selectedPackage?.price?.toLocaleString() || '1,48,000'}</span>
                 </div>
                 
-                <button type="submit" className="pay-button">
+                <button 
+                  type="submit" 
+                  className="pay-button"
+                  disabled={isProcessing}
+                >
                   <img src="https://razorpay.com/favicon.png" alt="Razorpay" className="razorpay-logo" />
-                  Pay with Razorpay
+                  {isProcessing ? 'Processing...' : 'Pay with Razorpay'}
                 </button>
               </div>
             </form>

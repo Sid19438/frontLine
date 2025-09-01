@@ -96,15 +96,7 @@ const AstroProfile = () => {
     }
   };
 
-  const handleConsultation = () => {
-    if (astrologer?.consultationUrl) {
-      window.open(astrologer.consultationUrl, '_blank');
-    } else {
-      // Fallback to Google Form if no consultation URL is set
-      const googleFormUrl = 'https://forms.gle/SsvcGuPiNvX5TP3SA';
-      window.open(googleFormUrl, '_blank');
-    }
-  };
+  // Removed unused handleConsultation function to fix ESLint warning
 
   const handlePackageSelection = (plan: Plan) => {
     setSelectedPackage(plan);
