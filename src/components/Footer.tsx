@@ -34,11 +34,6 @@ const footerLinks = [
   }
 ];
 
-const appBadges = [
-  { alt: 'Google Play', src: 'https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg', href: '#' },
-  { alt: 'App Store', src: 'https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg', href: '#' }
-];
-
 const socialLinks = [
   { href: '#', icon: <i className="fab fa-facebook-f" aria-label="Facebook" /> },
   { href: '#', icon: <i className="fab fa-x-twitter" aria-label="X" /> },
@@ -94,23 +89,6 @@ const Footer = () => (
             <li><a href="/terms-conditions">Terms & Conditions</a></li>
             {/* <li><a href="/refund-policy">Refund Policy</a></li> */}
           </ul>
-        </div>
-      </div>
-      <div className="footer-col-apps">
-        <h4>Download Our Apps</h4>
-        <div className="footer-app-badges">
-          {appBadges.map(badge => (
-            <a href={badge.href || '/'} key={badge.alt} target="_blank" rel="noopener noreferrer">
-              <img src={badge.src} alt={badge.alt} className="footer-app-badge" />
-            </a>
-          ))}
-        </div>
-        <div className="footer-social-icons">
-          {socialLinks.map((s, i) => (
-            <a href={s.href || '/'} key={i} target="_blank" rel="noopener noreferrer" className="footer-social-icon">
-              {s.icon}
-            </a>
-          ))}
         </div>
       </div>
     </div>

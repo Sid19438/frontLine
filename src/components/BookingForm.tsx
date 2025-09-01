@@ -54,7 +54,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ selectedPackage, astrologerNa
       };
 
       // Call backend to initiate payment
-      const response = await axios.post('http://localhost:5000/api/payment/initiate', paymentData);
+      const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL || 'https://csbackend-xr99.onrender.com/api'}/payment/initiate`, paymentData);
       
       if (response.data.success) {
         // Load Razorpay script if not already loaded
@@ -94,7 +94,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ selectedPackage, astrologerNa
       handler: async (response: any) => {
         try {
           // Verify payment with your backend
-          const verifyResponse = await axios.post('http://localhost:5000/api/payment/verify', {
+          const verifyResponse = await axios.post(`${process.env.REACT_APP_API_BASE_URL || 'https://csbackend-xr99.onrender.com/api'}/payment/verify`, {
             razorpay_order_id: response.razorpay_order_id,
             razorpay_payment_id: response.razorpay_payment_id,
             razorpay_signature: response.razorpay_signature,

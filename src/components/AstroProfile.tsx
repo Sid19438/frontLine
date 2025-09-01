@@ -27,7 +27,7 @@ const AstroProfile = () => {
       setLoading(true);
       setError('');
       
-      const response = await fetch('http://localhost:5000/api/website/astrologers', {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL || 'https://csbackend-xr99.onrender.com/api'}/website/astrologers`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

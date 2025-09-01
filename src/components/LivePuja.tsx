@@ -49,10 +49,12 @@ const LivePuja = () => {
               <div className="puja-card" key={idx} style={{ minWidth: 200, maxWidth: 200 }}>
                 <img src={puja.img} alt={puja.name} className="puja-img" />
                 <div className="puja-name">{puja.name}</div>
-                <div className="puja-price">
-                  ₹{puja.price}
+                <div className="puja-details">
+                  <div className="puja-price">
+                    ₹{puja.price}
+                  </div>
+                  <button className="book-puja-btn">Book Puja</button>
                 </div>
-                <button className="book-puja-btn">Book Puja</button>
               </div>
             ))}
           </div>
