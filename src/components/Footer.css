@@ -26,12 +26,14 @@
   flex-wrap: wrap;
   gap: 2.5rem;
   flex: 1 1 900px;
+  justify-content: space-between;
 }
 
 .footer-col {
   min-width: 160px;
   max-width: 200px;
   margin-bottom: 1.5rem;
+  flex: 1 1 auto;
 }
 
 .footer-col h4 {
@@ -169,7 +171,7 @@
   .footer-col-group {
     flex-wrap: wrap;
     gap: 2rem;
-    justify-content: flex-start;
+    justify-content: space-between;
   }
   .footer-col-apps {
     align-items: center;
@@ -177,34 +179,99 @@
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .footer-section {
-    padding: 2rem 0.5rem 1.2rem 0.5rem;
+    padding: 2rem 1rem 1.2rem 1rem;
   }
+  
   .footer-columns {
     flex-direction: column;
     gap: 2rem;
     align-items: stretch;
   }
+  
   .footer-col-group {
-    flex-direction: column;
-    gap: 1.2rem;
-    align-items: stretch;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
   }
-  .footer-col, .footer-col-apps {
+  
+  .footer-col {
     min-width: 0;
     max-width: 100%;
     margin-bottom: 1.2rem;
-    align-items: flex-start;
   }
+  
+  /* Get Advice On spans full width */
+  .footer-col:first-child {
+    grid-column: 1 / -1;
+  }
+  
+  /* Muhurat and Horoscope side by side */
+  .footer-col:nth-child(2) {
+    grid-column: 1 / 2;
+  }
+  
+  .footer-col:nth-child(3) {
+    grid-column: 2 / 3;
+  }
+  
+  /* Astrology and Legal side by side */
+  .footer-col:nth-child(4) {
+    grid-column: 1 / 2;
+  }
+  
+  .footer-col:nth-child(5) {
+    grid-column: 2 / 3;
+  }
+  
   .footer-app-badges {
     flex-direction: row;
     gap: 0.7rem;
     justify-content: center;
     margin-bottom: 1rem;
   }
+  
   .footer-social-icons {
     justify-content: center;
     gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-section {
+    padding: 1.5rem 0.5rem 0rem 1rem;
+  }
+  
+  .footer-col-group {
+    grid-template-columns: 1fr;
+    gap: 0rem;
+  }
+  
+  /* Stack all columns vertically on very small screens */
+  .footer-col {
+    grid-column: 1 / -1;
+  }
+  
+  .footer-col h4 {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .footer-col ul li a {
+    font-size: 0.9rem;
+  }
+  
+  .footer-bottom {
+    font-size: 0.9rem;
+  }
+  
+  .footer-legal-links a {
+    font-size: 0.8rem;
+    margin: 0 0.3rem;
+  }
+  
+  .footer-copyright {
+    font-size: 0.8rem;
   }
 } 

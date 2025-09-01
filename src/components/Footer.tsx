@@ -5,7 +5,7 @@ const footerLinks = [
   {
     heading: 'Get Advice On',
     links: [
-      'Finance & Business', 'Psychic Reading', 'Break-Up & Divorce', 'Vedic Astrology', 'Kids & Education', 'Tarot Reading', 'Marital Life', 'Love & Relationships', 'Career & Job', 'Cheating & Affairs', 'Numerology', 'Horary Astrology', 'Relationship Counseling', 'Healing', 'Vastu'
+      'Finance & Business',  'Break-Up & Divorce',  'Marital Life', 'Love & Relationships', 'Career & Job', 'Cheating & Affairs', 'Relationship Counseling'
     ]
   },
   {
@@ -13,20 +13,8 @@ const footerLinks = [
     links: ['Choghadiya', 'Rahu Kaal', 'Shubha Hora', 'Gowri Panchangam']
   },
   {
-    heading: 'Vrat and Upvaas',
-    links: ['Purnima Vrat', 'Amavasya Dates', 'Ekadashi Vrat', 'Pradosh Vrat', 'Sankashti Chaturthi', 'Vinayaka Chaturthi', 'Sankranti Dates', 'Satyanarayan Puja']
-  },
-  {
     heading: 'Horoscope',
     links: ['Daily Horoscope', 'Monthly Horoscope', 'Yearly Horoscope']
-  },
-  {
-    heading: 'Tarot',
-    links: []
-  },
-  {
-    heading: 'Panchang',
-    links: ["Today's Panchang"]
   },
   {
     heading: 'Astrology',
@@ -58,26 +46,15 @@ const Footer = () => (
           <ul>
             {footerLinks[1].links.map(link => <li key={link}><a href="/">{link}</a></li>)}
           </ul>
-          <h4>Tarot</h4>
         </div>
         <div className="footer-col">
-          <h4>Panchang</h4>
-          <ul>
-            {footerLinks[5].links.map(link => <li key={link}><a href="/">{link}</a></li>)}
-          </ul>
-          <h4>Astrology</h4>
-          <ul>
-            {footerLinks[6].links.map(link => <li key={link}><a href="/">{link}</a></li>)}
-          </ul>
-        </div>
-        <div className="footer-col">
-          <h4>Vrat and Upvaas</h4>
+          <h4>Horoscope</h4>
           <ul>
             {footerLinks[2].links.map(link => <li key={link}><a href="/">{link}</a></li>)}
           </ul>
         </div>
         <div className="footer-col">
-          <h4>Horoscope</h4>
+          <h4>Astrology</h4>
           <ul>
             {footerLinks[3].links.map(link => <li key={link}><a href="/">{link}</a></li>)}
           </ul>
