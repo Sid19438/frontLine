@@ -124,7 +124,7 @@ const PrivacyPolicy = () => {
             </p>
           </section>
 
-          <section>
+          {/* <section>
             <h2>11. Contact Us</h2>
             <p>
               If you have questions about this Privacy Policy or our data practices, please contact us at:
@@ -134,7 +134,7 @@ const PrivacyPolicy = () => {
               <p><strong>Phone:</strong> +91-XXXXXXXXXX</p>
               <p><strong>Address:</strong> Innovana Astro Services Ltd, [Your Address]</p>
             </div>
-          </section>
+          </section> */}
         </div>
       </div>
       <Footer />

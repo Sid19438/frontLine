@@ -92,7 +92,7 @@ const Footer = () => (
           <ul>
             <li><a href="/privacy-policy">Privacy Policy</a></li>
             <li><a href="/terms-conditions">Terms & Conditions</a></li>
-            <li><a href="/refund-policy">Refund Policy</a></li>
+            {/* <li><a href="/refund-policy">Refund Policy</a></li> */}
           </ul>
         </div>
       </div>
@@ -120,7 +120,7 @@ const Footer = () => (
         <span className="separator">|</span>
         <a href="/terms-conditions">Terms & Conditions</a>
         <span className="separator">|</span>
-        <a href="/refund-policy">Refund Policy</a>
+        {/* <a href="/refund-policy">Refund Policy</a> */}
       </div>
       <div className="footer-copyright">
         Copyright &copy; {new Date().getFullYear()} Innovana Astro Services Ltd. All Rights Reserved.
