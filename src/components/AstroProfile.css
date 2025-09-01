@@ -100,7 +100,6 @@
   border: 5px solid rgba(227, 227, 227, 0.6);
   box-shadow: 0 12px 35px rgba(167, 167, 166, 0.3);
   transition: all 0.3s ease;
-  animation: float 4s ease-in-out infinite;
 }
 
 .astro-avatar:hover {

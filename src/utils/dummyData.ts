@@ -37,7 +37,7 @@ export const dummyAstrologers: Astrologer[] = [
     reviews: 1247,
     rating: 5,
     experience: 15,
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face',
+    avatar: 'https://www.rollingstone.co.uk/wp-content/uploads/sites/2/2024/03/zayn-copy.jpg',
     about: 'Expert in Vedic astrology with 15+ years of experience. Specializes in marriage compatibility, career guidance, and health predictions. Provides accurate horoscope readings and personalized remedies for life challenges.',
     specializations: ['Marriage Compatibility', 'Career Guidance', 'Health Predictions', 'Remedies'],
     plans: [
@@ -112,7 +112,7 @@ export const dummyAstrologers: Astrologer[] = [
     reviews: 892,
     rating: 5,
     experience: 12,
-    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face',
+    avatar: 'https://pearlentertainment.in/wp-content/uploads/2024/08/Mostlysane-5.jpg',
     about: 'Specialist in numerology and gemstone remedies. Combines ancient wisdom with modern techniques to provide comprehensive life guidance. Expert in business numerology and relationship compatibility.',
     specializations: ['Business Numerology', 'Education Guidance', 'Relationship Compatibility', 'Gemstone Therapy'],
     plans: [
@@ -186,7 +186,7 @@ export const dummyAstrologers: Astrologer[] = [
     reviews: 1563,
     rating: 5,
     experience: 18,
-    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face',
+    avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcuYj43rWvaJaaVAV6GR7zaC8URwPb5sQCgA&s',
     about: 'Master of Kundli analysis and spiritual remedies. Provides comprehensive birth chart analysis, marriage compatibility, and personalized spiritual guidance. Expert in traditional Vedic remedies.',
     specializations: ['Kundli Analysis', 'Marriage Compatibility', 'Family Harmony', 'Spiritual Remedies'],
     plans: [
@@ -260,7 +260,7 @@ export const dummyAstrologers: Astrologer[] = [
     reviews: 2034,
     rating: 5,
     experience: 22,
-    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face',
+    avatar: 'https://i.pinimg.com/736x/99/e0/f4/99e0f484970d3a125d16159097e92d50.jpg',
     about: 'Renowned spiritual healer and tantra expert. Specializes in spiritual healing, protection rituals, and inner peace. Provides guidance for spiritual growth and life transformation.',
     specializations: ['Spiritual Healing', 'Protection Rituals', 'Inner Peace', 'Life Transformation'],
     plans: [

@@ -92,7 +92,7 @@ const Banner: React.FC = () => {
         </div>
 
         {/* Service Cards */}
-        <div className="service-cards">
+        {/* <div className="service-cards">
           <div className="service-card">
             <div className="service-icon chat-icon">💬</div>
             <span>Chat with Astrologer</span>
@@ -109,7 +109,7 @@ const Banner: React.FC = () => {
             <div className="service-icon pooja-icon">🕉️</div>
             <span>Book A Pooja</span>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

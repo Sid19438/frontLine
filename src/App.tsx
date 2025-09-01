@@ -15,6 +15,10 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsConditions from './components/TermsConditions';
 import RefundPolicy from './components/RefundPolicy';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// Import the service images
+import bestPuja from './assests/icons/bestPuja.jpg';
+import bestGem from './assests/icons/bestGem.jpg';
+import images from './assests/icons/images.jpg';
 
 function App() {
   return (
@@ -34,6 +38,7 @@ function App() {
                 <h2 className="services-title">Our Services</h2>
                 <div className="services-list">
                   <div className="service-card">
+                    <img src={bestPuja} alt="Puja Service" className="service-image" />
                     <h3>Puja</h3>
                     <p>
                       Our expert priests perform authentic Vedic pujas and rituals to help you overcome life's obstacles and attract positive energies. <br/>
@@ -42,6 +47,7 @@ function App() {
                     </p>
                   </div>
                   <div className="service-card">
+                    <img src={images} alt="Consultation Service" className="service-image" />
                     <h3>Consultation</h3>
                     <p>
                       Connect with experienced astrologers for in-depth guidance and remedies tailored to your unique birth chart. <br/>
@@ -50,6 +56,7 @@ function App() {
                     </p>
                   </div>
                   <div className="service-card">
+                    <img src={bestGem} alt="E-Commerce Service" className="service-image" />
                     <h3>E-Commerce</h3>
                     <p>
                       Discover authentic gemstones, rudraksha, yantras, and other powerful astrological remedies to enhance your life. <br/>

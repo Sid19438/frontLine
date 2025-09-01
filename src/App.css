@@ -265,6 +265,24 @@ body, html, #root, .App {
   letter-spacing: 0.2px;
 }
 
+.service-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  border: 3px solid rgba(212, 175, 55, 0.3);
+}
+
+.service-card:hover .service-image {
+  transform: scale(1.05);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+  border-color: rgba(212, 175, 55, 0.6);
+}
+
 .service-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
@@ -286,8 +304,99 @@ body, html, #root, .App {
 
 @media (max-width: 480px) {
   
-
+  .services-title {
+    font-size: 1.75rem;
+    margin-top: 3rem;
+    margin-bottom: 0.3rem;
   
+    
+  }
+
+  .services-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.24rem;
+    max-width: 1600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    padding: 1rem 1rem;
+  }
+  
+  .service-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow: 
+      0 20px 40px rgba(0, 0, 0, 0.15),
+      0 0 0 1px rgba(255, 255, 255, 0.08);
+    padding: 1.7rem 2.5rem;
+    min-width: 380px;
+    max-width: 420px;
+    flex: 0 0 380px;
+    color: #000;
+    margin: 0.5rem 0;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  
+.service-card h3 {
+  font-size: 1.4rem;
+  color: #d4af37;
+  margin-bottom: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-align: center;
+  width: 100%;
+}
+
+.service-card p {
+  font-size: 0.85rem;
+  color: #444;
+  font-weight: 400;
+  line-height: 1.55;
+  text-shadow: none;
+  text-align: center;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.service-card b {
+  color: #d4af37;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.service-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  position: relative;
+  top: 7px;
+}
+
+.service-card:hover .service-image {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-color: rgba(212, 175, 55, 0.6);
+}
 
 
 }

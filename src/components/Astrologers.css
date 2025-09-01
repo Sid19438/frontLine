@@ -128,7 +128,6 @@
   border: 4px solid rgba(47, 114, 197, 0.6);
   box-shadow: 0 8px 25px rgba(67, 75, 187, 0.3);
   transition: all 0.3s ease;
-  animation: float 4s ease-in-out infinite;
 }
 
 .astrologer-card:hover .astro-avatar {
@@ -157,7 +156,7 @@
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
   font-weight: 600;
-  font-style: italic;
+  /* font-style: italic; */
   text-align: center;
   line-height: 1.3;
   white-space: nowrap;   /* text ko break hone se rokega */
@@ -168,7 +167,7 @@
 }
 
 .astro-experience {
-  color: #34495e;
+  color:  #383838;;
   font-size: 0.85rem;
   margin-bottom: 0.5rem;
   font-weight: 600;
@@ -181,7 +180,7 @@
 }
 
 .astro-reviews {
-  color: #2c3e50;
+  color: #383838;;
   margin-bottom: 0.5rem;
   font-weight: 600;
   font-size: 0.95rem;
@@ -189,24 +188,24 @@
 }
 
 .review-count {
-  color: #e74c3c;
-  font-weight: bold;
+  color:  #383838;;
+  font-weight: 600;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .astro-rating {
-  color: #f39c12;
+  color: #a412f3;
   font-size: 1.3rem;
   text-shadow: 0 2px 8px rgba(243, 156, 18, 0.4);
-  animation: glow 2s ease-in-out infinite;
   text-align: center;
 }
 
 .see-all-container {
-  margin-top: 3rem;
+  margin-top: 2rem;
   text-align: center;
   position: relative;
   z-index: 1;
+  margin-bottom: 1rem;
 }
 
 .see-all-btn {
@@ -419,7 +418,6 @@
   border: 4px solid rgba(255, 214, 0, 0.6);
   box-shadow: 0 8px 25px rgba(255, 214, 0, 0.3);
   transition: all 0.3s ease;
-  animation: float 4s ease-in-out infinite;
 }
 
 .astrologers-swiper .astrologer-card:hover .astro-avatar {
@@ -453,7 +451,7 @@
   font-size: 0.85rem;
   margin-bottom: 0.5rem;
   font-weight: 600;
-  background: rgba(102, 126, 234, 0.1);
+  background: rgba(60, 76, 149, 0.1);
   padding: 0.4rem 0.8rem;
   border-radius: 15px;
   border: 1px solid rgba(102, 126, 234, 0.3);
@@ -469,16 +467,15 @@
 }
 
 .astrologers-swiper .astrologer-card .review-count {
-  color: #e74c3c;
-  font-weight: bold;
+  color:  #383838;;
+  font-weight: 600;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .astrologers-swiper .astrologer-card .astro-rating {
-  color: #f39c12;
+  color: #a412f3;
   font-size: 1.3rem;
   text-shadow: 0 2px 8px rgba(243, 156, 18, 0.4);
-  animation: glow 2s ease-in-out infinite;
   margin-bottom: 0.4rem;
   text-align: center;
 } 
@@ -506,7 +503,7 @@
     box-shadow: 
       0 15px 35px rgba(0, 0, 0, 0.2),
       0 0 0 1px rgba(255, 255, 255, 0.1);
-    padding: 0.95rem 0.2rem;
+    padding: 1.25rem 0.2rem;
     min-width: calc(50% - 0.5rem);
     max-width: calc(50% - 0.5rem);
     flex: 0 0 calc(50% - 0.5rem);
@@ -523,11 +520,14 @@
 
   
   .astrologers-section h2 {
-    font-size: 1.3rem;
+    font-size: 1.65rem;
+    margin-bottom: 1.24rem;
   }
   
   .astrologers-section p {
     font-size: 0.75rem;
+    margin-bottom: 1.24rem;
+    display: none;
   }
   
   .astrologers-carousel-container {
@@ -542,54 +542,54 @@
   }
   
   .astrologer-card .astro-avatar {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     border-width: 1px;
     margin-bottom: 0.4rem;
   }
   
   .astrologer-card .astro-name {
-    font-size: 0.85rem;
+    font-size: 1rem;
     color: #2c2c2d;
     font-weight: 700;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.3rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 60%;
+    max-width: 90%;
     display: block;
   }
   
   .astrologer-card .astro-expertise {
-    font-size: 0.65rem;
-    color: #6f6f6f;
-    font-weight: 600;
+    font-size: 0.75rem;
+    color: #7b7b7b;
+    font-weight: 500;
     margin-bottom: 0.2rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 50%;
+    max-width: 90%;
     display: block;
   }
   
   .astrologer-card .astro-experience {
-    font-size: 0.6rem;
-    padding: 0.2rem 0.3rem;
-    color: #34495e;
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    color: #5f5f5f;
     font-weight: 600;
     margin-bottom: 0.2rem;
   }
   
   .astrologer-card .astro-reviews {
-    font-size: 0.7rem;
-    color: #2c3e50;
-    font-weight: 600;
+    font-size: 0.75rem;
+    color: #696969;
+    font-weight: 500;
     margin-bottom: 0.2rem;
   }
   
   .astrologer-card .astro-rating {
-    font-size: 0.85rem;
-    color: #f39c12;
+    font-size: 0.95rem;
+    color: #a412f3;
   }
   
   .astrologers-swiper .astrologer-card .astro-avatar {
@@ -599,7 +599,7 @@
   }
   
   .astrologers-swiper .astrologer-card .astro-name {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: #2c3e50;
     font-weight: 700;
   }
@@ -615,6 +615,7 @@
     padding: 0.25rem 0.4rem;
     color: #34495e;
     font-weight: 600;
+    border-radius: 0px !important;
   }
   
   .astrologers-swiper .astrologer-card .astro-reviews {
@@ -625,7 +626,7 @@
   
   .astrologers-swiper .astrologer-card .astro-rating {
     font-size: 1rem;
-    color: #f39c12;
+    color: #a412f3;
   }
   
   .see-all-btn {
@@ -671,7 +672,7 @@
   }
   
   .astrologer-card .astro-name {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     margin-bottom: 0.15rem;
     white-space: nowrap;
     overflow: hidden;
@@ -694,6 +695,7 @@
     font-size: 0.55rem;
     padding: 0.15rem 0.25rem;
     margin-bottom: 0.15rem;
+    border-radius: 10px;
   }
   
   .astrologer-card .astro-reviews {
@@ -719,33 +721,33 @@
   }
   
   .astrologers-swiper .astrologer-card .astro-name {
-    font-size: 0.9rem;
-    color: #2c3e50;
+    font-size: 1rem;
+    color:  #383838;
     font-weight: 700;
   }
   
   .astrologers-swiper .astrologer-card .astro-expertise {
     font-size: 0.7rem;
-    color: #667eea;
+    color: #3d3d3d;
     font-weight: 600;
   }
   
   .astrologers-swiper .astrologer-card .astro-experience {
     font-size: 0.65rem;
     padding: 0.2rem 0.3rem;
-    color: #34495e;
+    color: #383838;
     font-weight: 600;
   }
   
   .astrologers-swiper .astrologer-card .astro-reviews {
     font-size: 0.75rem;
-    color: #2c3e50;
+    color: #383838;
     font-weight: 600;
   }
   
   .astrologers-swiper .astrologer-card .astro-rating {
     font-size: 0.9rem;
-    color: #f39c12;
+    color: #a412f3;
   }
   
   .see-all-btn {
