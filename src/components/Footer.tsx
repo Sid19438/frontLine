@@ -68,6 +68,16 @@ const Footer = () => (
           </ul>
         </div>
       </div>
+      <div className="footer-col-apps">
+        <h4>Follow Us</h4>
+        <div className="footer-social-icons">
+          {socialLinks.map((social, index) => (
+            <a key={index} href={social.href} className="footer-social-icon" target="_blank" rel="noopener noreferrer">
+              {social.icon}
+            </a>
+          ))}
+        </div>
+      </div>
     </div>
     <div className="footer-bottom">
       <div className="footer-legal-links">
