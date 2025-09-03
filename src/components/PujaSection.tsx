@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { getAllPujas, Puja } from '../utils/dummyData';
+import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import './PujaSection.css';
@@ -7,6 +8,7 @@ import './PujaSection.css';
 const PujaSection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const pujas = getAllPujas();
+  const navigate = useNavigate();
   
   const categories = ['All', ...Array.from(new Set(pujas.map(puja => puja.category)))];
   
@@ -18,6 +20,10 @@ const PujaSection: React.FC = () => {
     // TODO: Implement booking functionality
     console.log('Booking puja:', puja.name);
     alert(`Booking ${puja.name} for ₹${puja.price}`);
+  };
+
+  const handleViewDetails = (pujaId: string) => {
+    navigate(`/puja/${pujaId}`);
   };
 
   return (
@@ -63,7 +69,7 @@ const PujaSection: React.FC = () => {
               <h3 className="puja-name">{puja.name}</h3>
               <p className="puja-description">{puja.description}</p>
               
-              <div className="puja-details">
+              {/* <div className="puja-details">
                 <div className="puja-duration">
                   <span className="duration-icon">⏱️</span>
                   <span>{puja.duration}</span>
@@ -72,7 +78,7 @@ const PujaSection: React.FC = () => {
                   <span className="category-icon">🏷️</span>
                   <span>{puja.category}</span>
                 </div>
-              </div>
+              </div> */}
 
               <div className="puja-benefits">
                 <h4>Benefits:</h4>
@@ -98,10 +104,16 @@ const PujaSection: React.FC = () => {
 
               <button 
                 className="book-now-btn"
-                onClick={() => handleBookNow(puja)}
+                onClick={() => handleViewDetails(puja._id)}
               >
                 Book Now
               </button>
+              {/* <button 
+                className="view-details-btn"
+                onClick={() => handleViewDetails(puja._id)}
+              >
+                View Details
+              </button> */}
             </div>
           </div>
         ))}

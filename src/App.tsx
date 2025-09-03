@@ -15,6 +15,7 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsConditions from './components/TermsConditions';
 import RefundPolicy from './components/RefundPolicy';
 import PujaSection from './components/PujaSection';
+import PujaDetail from './components/PujaDetail';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // Import the service images
 import bestPuja from './assests/icons/bestPuja.jpg';
@@ -83,6 +84,7 @@ function App() {
           <Route path="/astrologer/:name" element={<AstroProfile />} />
           <Route path="/all-astrologers" element={<AllAstrologers />} />
           <Route path="/pujas" element={<PujaSection />} />
+          <Route path="/puja/:id" element={<PujaDetail />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-conditions" element={<TermsConditions />} />
