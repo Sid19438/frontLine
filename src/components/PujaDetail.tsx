@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../api/client';
 import Header from './Header';
@@ -29,7 +29,7 @@ const PujaDetail: React.FC = () => {
   const [error, setError] = useState('');
 
   // Fetch puja from API
-  const fetchPuja = async () => {
+  const fetchPuja = useCallback(async () => {
     try {
       setLoading(true);
       const response = await api.get(`/website/pujas/${id}`);
@@ -40,13 +40,13 @@ const PujaDetail: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id]);
 
   useEffect(() => {
     if (id) {
       fetchPuja();
     }
-  }, [id]);
+  }, [id, fetchPuja]);
 
   const handleBookNow = () => {
     // TODO: Implement booking functionality

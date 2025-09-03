@@ -52,12 +52,6 @@ const PujaSection: React.FC = () => {
     ? pujas.filter(puja => puja.isActive)
     : pujas.filter(puja => puja.category === selectedCategory && puja.isActive);
 
-  const handleBookNow = (puja: Puja) => {
-    // TODO: Implement booking functionality
-    console.log('Booking puja:', puja.name);
-    alert(`Booking ${puja.name} for ₹${puja.price}`);
-  };
-
   const handleViewDetails = (pujaId: string) => {
     navigate(`/puja/${pujaId}`);
   };
