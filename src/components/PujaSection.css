@@ -74,6 +74,8 @@
   padding: 0 20px;
 }
 
+
+
 .puja-card {
   background: white;
   border-radius: 20px;
@@ -153,16 +155,17 @@
 .puja-description {
   color: #666;
   line-height: 1.4;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   font-size: 0.8rem;
 }
 
 .puja-details {
   display: flex;
   gap: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   font-size: 0.85rem;
   color: #555;
+  margin-top: 1rem;
 }
 
 .puja-duration,
@@ -174,7 +177,7 @@
 
 .duration-icon,
 .category-icon {
-  font-size: 1rem;
+  /* width: 0.5rem; */
 }
 
 .puja-benefits {
@@ -209,8 +212,29 @@
   font-size: 1rem;
 }
 
+.current-price-text{
+    font-size: 2rem;
+  font-weight: 700;
+  color: #28a745;
+}
+
+.original-price-text{
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #999;
+    text-decoration: line-through;
+}
+
+
+
 .puja-pricing {
   margin-bottom: 10px;
+}
+
+.benifits-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 0.1rem;
 }
 
 .price-container {
@@ -221,7 +245,7 @@
 }
 
 .current-price {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #28a745;
 }
@@ -231,6 +255,8 @@
   color: #999;
   text-decoration: line-through;
 }
+
+
 
 .discount {
   background: #ff6b6b;
@@ -332,7 +358,7 @@
   }
   
   .current-price {
-    font-size: 1.3rem;
+    font-size: 1rem;
   }
 }
 

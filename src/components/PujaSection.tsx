@@ -75,7 +75,7 @@ const PujaSection: React.FC = () => {
                   <span>{puja.duration}</span>
                 </div>
                 <div className="puja-category">
-                  <span className="category-icon">🏷️</span>
+                  <span className="duration-icon">🏷️</span>
                   <span>{puja.category}</span>
                 </div>
               </div>
@@ -86,15 +86,18 @@ const PujaSection: React.FC = () => {
                   {puja.benefits.slice(0, 3).map((benefit, index) => (
                     <li key={index} className="benefit-item">
                       <span className="benefit-icon">✓</span>
-                      {benefit}
+                      <h2 className='benifits-text' > {benefit}</h2>
+                      {/* {benefit} */}
                     </li>
                   ))}
                 </ul>
               </div>
 
+             
+
               <div className="puja-pricing">
                 <div className="price-container">
-                  <span className="current-price">₹{puja.price}</span>
+                  <span className="current-price"><h2 className='current-price-text' >₹{puja.price}</h2></span>
                   <span className="original-price">₹{puja.originalPrice}</span>
                   <span className="discount">
                     {Math.round(((puja.originalPrice - puja.price) / puja.originalPrice) * 100)}% OFF
