@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../api/client';
+import PujaManagement from './PujaManagement';
 import './Dashboard.css';
 
 interface Plan {
@@ -39,6 +40,7 @@ const Dashboard: React.FC = () => {
   const [editingAstrologer, setEditingAstrologer] = useState<Astrologer | null>(null);
   const [banners, setBanners] = useState<any[]>([]);
   const [bannerForm, setBannerForm] = useState({ title: '', imageUrl: '', isActive: true });
+  const [activeTab, setActiveTab] = useState<'astrologers' | 'pujas' | 'banners'>('astrologers');
   
   // Form states
   const [formData, setFormData] = useState({
@@ -297,8 +299,8 @@ const Dashboard: React.FC = () => {
   return (
     <div className="dashboard-container">
       <div className="dashboard-header">
-        <h1>Astrologer Management Dashboard</h1>
-        <p>Manage your astrologer profiles and services</p>
+        <h1>Admin Dashboard</h1>
+        <p>Manage your astrologers, pujas, and banners</p>
       </div>
 
       {error && (
@@ -308,14 +310,39 @@ const Dashboard: React.FC = () => {
         </div>
       )}
 
-      <div className="dashboard-actions">
+      {/* Tab Navigation */}
+      <div className="dashboard-tabs">
         <button 
-          className="add-product-btn"
-          onClick={() => setShowAddForm(true)}
+          className={`tab-btn ${activeTab === 'astrologers' ? 'active' : ''}`}
+          onClick={() => setActiveTab('astrologers')}
         >
-          {editingAstrologer ? 'Cancel Edit' : 'Add New Astrologer'}
+          Astrologers
+        </button>
+        <button 
+          className={`tab-btn ${activeTab === 'pujas' ? 'active' : ''}`}
+          onClick={() => setActiveTab('pujas')}
+        >
+          Pujas
+        </button>
+        <button 
+          className={`tab-btn ${activeTab === 'banners' ? 'active' : ''}`}
+          onClick={() => setActiveTab('banners')}
+        >
+          Banners
         </button>
       </div>
+
+      {/* Tab Content */}
+      {activeTab === 'astrologers' && (
+        <div className="tab-content">
+          <div className="dashboard-actions">
+            <button 
+              className="add-product-btn"
+              onClick={() => setShowAddForm(true)}
+            >
+              {editingAstrologer ? 'Cancel Edit' : 'Add New Astrologer'}
+            </button>
+          </div>
 
       {/* Add/Edit Form */}
       {showAddForm && (
@@ -515,53 +542,6 @@ const Dashboard: React.FC = () => {
         </div>
       )}
 
-      {/* Banners Manager */}
-      <div className="products-section">
-        <h2>Banners ({banners.length}/{BANNER_LIMIT})</h2>
-        <form onSubmit={addBanner} className="form-container" style={{ marginBottom: 16 }}>
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="bannerTitle">Title:</label>
-              <input id="bannerTitle" name="title" value={bannerForm.title} onChange={handleBannerInput} required />
-            </div>
-            <div className="form-group">
-              <label htmlFor="bannerImage">Image URL:</label>
-              <input id="bannerImage" name="imageUrl" value={bannerForm.imageUrl} onChange={handleBannerInput} required />
-            </div>
-            <div className="form-group" style={{ display: 'flex', alignItems: 'center' }}>
-              <label htmlFor="bannerActive" style={{ marginRight: 8 }}>Active:</label>
-              <input id="bannerActive" type="checkbox" name="isActive" checked={bannerForm.isActive} onChange={handleBannerInput} />
-            </div>
-          </div>
-          <div className="form-actions">
-            <button type="submit" className="submit-btn">Add Banner</button>
-          </div>
-        </form>
-
-        {banners.length === 0 ? (
-          <div className="no-products">
-            <p>No banners yet. Add up to 4.</p>
-          </div>
-        ) : (
-          <div className="products-grid">
-            {banners.map((b: any) => (
-              <div key={b._id} className="product-card">
-                <div className="product-info">
-                  <img src={b.imageUrl} alt={b.title} className="astro-avatar-small" />
-                  <h3 style={{ marginTop: 8 }}>{b.title}</h3>
-                  <div className="status-indicator">
-                    Status: <span className={b.isActive ? 'active' : 'inactive'}>{b.isActive ? 'Active' : 'Inactive'}</span>
-                  </div>
-                </div>
-                <div className="product-actions">
-                  <button className="delete-btn" onClick={() => deleteBanner(b._id)}>Delete</button>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-
       {/* Astrologers List */}
       <div className="products-section">
         <h2>Current Astrologers ({astrologers.length})</h2>
@@ -625,6 +605,85 @@ const Dashboard: React.FC = () => {
           </div>
         )}
       </div>
+        </div>
+      )}
+
+      {activeTab === 'pujas' && (
+        <div className="tab-content">
+          <PujaManagement />
+        </div>
+      )}
+
+      {activeTab === 'banners' && (
+        <div className="tab-content">
+          <div className="products-section">
+            <h2>Banner Management</h2>
+            <p>Add up to 4 banners for your website homepage</p>
+            
+            <form onSubmit={addBanner} className="banner-form">
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Banner Title:</label>
+                  <input
+                    type="text"
+                    name="title"
+                    value={bannerForm.title}
+                    onChange={handleBannerInput}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Image URL:</label>
+                  <input
+                    type="url"
+                    name="imageUrl"
+                    value={bannerForm.imageUrl}
+                    onChange={handleBannerInput}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="form-group checkbox-group">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="isActive"
+                    checked={bannerForm.isActive}
+                    onChange={handleBannerInput}
+                  />
+                  Active
+                </label>
+              </div>
+              <div className="form-actions">
+                <button type="submit" className="submit-btn">Add Banner</button>
+              </div>
+            </form>
+
+            {banners.length === 0 ? (
+              <div className="no-products">
+                <p>No banners yet. Add up to 4.</p>
+              </div>
+            ) : (
+              <div className="products-grid">
+                {banners.map((b: any) => (
+                  <div key={b._id} className="product-card">
+                    <div className="product-info">
+                      <img src={b.imageUrl} alt={b.title} className="astro-avatar-small" />
+                      <h3 style={{ marginTop: 8 }}>{b.title}</h3>
+                      <div className="status-indicator">
+                        Status: <span className={b.isActive ? 'active' : 'inactive'}>{b.isActive ? 'Active' : 'Inactive'}</span>
+                      </div>
+                    </div>
+                    <div className="product-actions">
+                      <button className="delete-btn" onClick={() => deleteBanner(b._id)}>Delete</button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

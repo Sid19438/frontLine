@@ -4,6 +4,26 @@
   padding-top: 80px;
 }
 
+/* Loading and Error States */
+.loading, .not-found {
+  text-align: center;
+  padding: 100px 20px;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.loading h2, .not-found h2 {
+  margin-bottom: 20px;
+  color: #667eea;
+}
+
+.not-found {
+  background: white;
+  border-radius: 15px;
+  margin: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
 .detail-container {
   max-width: 1200px;
   margin: 0 auto;
