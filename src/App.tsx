@@ -45,14 +45,14 @@ function App() {
                     <p>
                       Our expert priests perform authentic Vedic pujas and rituals to help you overcome life's obstacles and attract positive energies. <br/>
                       <b>Issues addressed:</b> Health problems, financial difficulties, career obstacles, planetary doshas, peace and harmony, protection from negative influences, and more. <br/>
-                      Book a personalized puja and join live from anywhere for blessings and prosperity.
+                      Book a personalized puja and join live from anywhere.
                     </p>
-                    <button 
+                    {/* <button 
                       className="browse-all-btn"
                       onClick={() => window.location.href = '/pujas'}
                     >
                       Browse All Pujas
-                    </button>
+                    </button> */}
                   </div>
                   <div className="service-card">
                     <img src={images} alt="Consultation Service" className="service-image" />

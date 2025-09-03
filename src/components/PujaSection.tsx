@@ -110,19 +110,22 @@ const PujaSection: React.FC = () => {
                 </div>
                 
                 <div className="puja-content">
-                  <h3 className="puja-name">{puja.name}</h3>
-                  <p className="puja-description">{puja.description}</p>
-                  
-                  <div className="puja-details">
-                    <div className="puja-duration">
-                      <span className="duration-icon">⏱️</span>
-                      <span>{puja.duration}</span>
+                  <div className="puja-header-row">
+                    <div className='puja-name-container' >
+                    <h3 className="puja-name">{puja.name}</h3>
                     </div>
-                    <div className="puja-category">
-                      <span className="duration-icon">🏷️</span>
-                      <span>{puja.category}</span>
+                    <div className="puja-details">
+                      <div className="puja-duration">
+                        {/* <span className="duration-icon">⏱️</span> */}
+                        <h2 className='duration-text'>{puja.duration}</h2>
+                      </div>
+                      <div className="puja-category">
+                        {/* <span className="duration-icon">🏷️</span> */}
+                        <h2 className='duration-text'>{puja.category}</h2>
+                      </div>
                     </div>
                   </div>
+                  <p className="puja-description">{puja.description}</p>
 
                   <div className="puja-benefits">
                     <h4>Benefits:</h4>
