@@ -1,0 +1,10 @@
+# Netlify Configuration
+
+## Redirects for SPA
+/*    /index.html   200
+
+## Headers
+/*
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  X-Content-Type-Options: nosniff
