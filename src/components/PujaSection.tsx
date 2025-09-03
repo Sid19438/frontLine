@@ -69,7 +69,7 @@ const PujaSection: React.FC = () => {
               <h3 className="puja-name">{puja.name}</h3>
               <p className="puja-description">{puja.description}</p>
               
-              {/* <div className="puja-details">
+              <div className="puja-details">
                 <div className="puja-duration">
                   <span className="duration-icon">⏱️</span>
                   <span>{puja.duration}</span>
@@ -78,7 +78,7 @@ const PujaSection: React.FC = () => {
                   <span className="category-icon">🏷️</span>
                   <span>{puja.category}</span>
                 </div>
-              </div> */}
+              </div>
 
               <div className="puja-benefits">
                 <h4>Benefits:</h4>
