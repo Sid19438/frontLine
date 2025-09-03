@@ -108,7 +108,7 @@ const PujaSection: React.FC = () => {
               <div key={puja._id} className="puja-card">
                 <div className="puja-image-container">
                   <img src={puja.image} alt={puja.name} className="puja-image" />
-                  {puja.isPopular && <div className="popular-badge">Popular</div>}
+                  {/* {puja.isPopular && <div className="popular-badge">Popular</div>} */}
                   <div className="puja-rating">
                     <span className="stars">★★★★★</span>
                     <span className="rating-text">{puja.rating} ({puja.reviews} reviews)</span>
