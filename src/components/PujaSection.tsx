@@ -129,7 +129,7 @@ const PujaSection: React.FC = () => {
                     <div className="price-container">
                       <span className="current-price"><h2 className='current-price-text' >₹{puja.price}</h2></span>
                       <span className="original-price">₹{puja.originalPrice}</span>
-                      <span className="discount">
+                      <span  className="discount">
                         {Math.round(((puja.originalPrice - puja.price) / puja.originalPrice) * 100)}% OFF
                       </span>
                     </div>
@@ -145,6 +145,7 @@ const PujaSection: React.FC = () => {
               </div>
             ))}
           </div>
+          
 
           {filteredPujas.length === 0 && (
             <div className="no-pujas">
