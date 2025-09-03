@@ -265,6 +265,28 @@ body, html, #root, .App {
   letter-spacing: 0.2px;
 }
 
+.browse-all-btn {
+  background: linear-gradient(45deg, #d4af37, #f4d03f);
+  color: #000;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.browse-all-btn:hover {
+  background: linear-gradient(45deg, #f4d03f, #d4af37);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
 .service-image {
   width: 120px;
   height: 120px;

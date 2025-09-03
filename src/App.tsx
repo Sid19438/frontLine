@@ -14,6 +14,7 @@ import AllAstrologers from './components/AllAstrologers';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsConditions from './components/TermsConditions';
 import RefundPolicy from './components/RefundPolicy';
+import PujaSection from './components/PujaSection';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // Import the service images
 import bestPuja from './assests/icons/bestPuja.jpg';
@@ -45,6 +46,12 @@ function App() {
                       <b>Issues addressed:</b> Health problems, financial difficulties, career obstacles, planetary doshas, peace and harmony, protection from negative influences, and more. <br/>
                       Book a personalized puja and join live from anywhere for blessings and prosperity.
                     </p>
+                    <button 
+                      className="browse-all-btn"
+                      onClick={() => window.location.href = '/pujas'}
+                    >
+                      Browse All Pujas
+                    </button>
                   </div>
                   <div className="service-card">
                     <img src={images} alt="Consultation Service" className="service-image" />
@@ -75,6 +82,7 @@ function App() {
           } />
           <Route path="/astrologer/:name" element={<AstroProfile />} />
           <Route path="/all-astrologers" element={<AllAstrologers />} />
+          <Route path="/pujas" element={<PujaSection />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-conditions" element={<TermsConditions />} />

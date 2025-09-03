@@ -40,7 +40,7 @@ const LivePuja = () => {
           <p>
             Explore our diverse range of online Pujas and Anushthans to find the perfect spiritual ritual that resonates with your goals and aspirations.Let us guide you through this sacred journey, helping you connect with the divine and experience the transformative benefits of these ancient practices. We are here to ensure that your spiritual endeavors are accessible, affordable, and completely personalized!
           </p>
-          <button className="browse-puja-btn">Browse All Puja</button>
+          <button className="browse-puja-btn" onClick={() => window.location.href = '/pujas'}>Browse All Puja</button>
         </div>
         <div className="livepuja-right">
           <button className="puja-scroll-btn left" onClick={() => handleScroll('left')} disabled={startIdx === 0}>&lt;</button>
